@@ -6,27 +6,27 @@ import {Link, withRouter} from 'react-router-dom';
 
 
 function Nav(props) {
-   // if(props.location.pathname !== '/'){
+    if(props.location.pathname !== '/'){
         return (
-            
             <div>
                 nav
-                {/* {console.log(props)}
-            <Link className="home" to='/dashboard' username={props.username} profilePicture={props.profilePicture}>
-            <span>Dashboard</span>
+                <br></br>
+                {console.log(props)}
+            <Link className="workout" to='/workout' >
+            <span>Workout</span>
             
             </Link>
-            <Link className="new-post" to='/post'>
-            <span>New Post</span>
+            <Link className="weight" to='/weight'>
+            <span>Weight</span>
             </Link>
-            <Link className="logout" to='/'>
-            <span>Logout</span>
-            </Link> */}
+            <Link className="goals" to='/goals'>
+            <span>Goals</span>
+            </Link>
             </div>
         )
-//  }else{
-//      return null;
-//  }
+ }else{
+     return null;
+ }
 }
 
 
@@ -38,6 +38,5 @@ function Nav(props) {
 //     }
 // }
 
-// export default connect(mapStateToProps)(withRouter(Nav));
-
-export default Nav;
+//export default connect(mapStateToProps)(withRouter(Nav));
+export default withRouter(Nav);
