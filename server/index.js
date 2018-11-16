@@ -11,6 +11,18 @@ const port = 8080;
 app.use(cors());
 app.use(bodyParser.json());
 
+massive(process.env.DATABASE_STRING)
+.then(db => {
+    app.set('db', db)
+    console.log('Database is Connected Boss')
+})
+.catch(err => {
+    console.log('Database connection error', err)
+})
+
+app.post('/api/register', controller.register)
+app.post('/api/login', controller.loginUser)
+
 app.get('/health', (req, res) => {
     return res.send('ok')
 })

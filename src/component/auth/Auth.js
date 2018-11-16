@@ -15,6 +15,27 @@ class Auth extends Component {
         this.setState({password: e.target.value})
     }
 
+    login(){
+        axios.post(`http://localhost:8080/api/login`, {
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then((response) => {
+            this.props.history.push('/dashboard')
+        })
+    }
+
+    registerNewUser(){
+        axios.post(`http://localhost:8080/api/register`, {
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then((response) => {
+            console.log(response.data)
+            this.props.history.push('/dashboard')
+        })
+    }
+
 
     render(){
         return(
@@ -35,8 +56,8 @@ class Auth extends Component {
                 ></input>
                 <br></br>
 
-                <button>Login</button>
-                <button>Register</button>
+                <button onClick={() => this.login()}>Login</button>
+                <button onClick={() => this.registerNewUser()}>Register</button>
             </div>
         )
     }

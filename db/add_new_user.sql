@@ -1,0 +1,1 @@
+INSERT INTO UserProfile (username, password) VALUES ($1, $2)

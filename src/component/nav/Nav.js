@@ -10,6 +10,7 @@ function Nav(props) {
         return (
             
             <div>
+                nav
                 {/* {console.log(props)}
             <Link className="home" to='/dashboard' username={props.username} profilePicture={props.profilePicture}>
             <span>Dashboard</span>

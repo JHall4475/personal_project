@@ -1,0 +1,1 @@
+SELECT * FROM UserProfile WHERE username = $1
