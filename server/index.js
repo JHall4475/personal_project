@@ -23,6 +23,7 @@ massive(process.env.DATABASE_STRING)
 app.post('/api/register', controller.register)
 app.post('/api/login', controller.loginUser)
 
+
 app.get('/health', (req, res) => {
     return res.send('ok')
 })

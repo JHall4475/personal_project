@@ -42,5 +42,6 @@ module.exports = {
             console.log('Database error', err)
             res.status(500).send(err)
         })
-    }
+    },
+
 }
