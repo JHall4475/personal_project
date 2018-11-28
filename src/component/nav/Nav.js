@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React from 'react';
+//import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ function Nav(props) {
             <div>
                 nav
                 <br></br>
-                {console.log(props)}
+                {/* {console.log(props)} */}
             <Link className="workout" to='/workout' >
             <span>Workout</span>
             

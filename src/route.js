@@ -5,6 +5,7 @@ import Weight from '../src/component/weight/Weight';
 import Goals from '../src/component/goals/Goals';
 import Auth from '../src/component/auth/Auth';
 import Equipment from './component/workout/Equipment';
+import WeightWizard from './component/weight/WeightWizard';
 
 export default (
     <Switch>
@@ -13,6 +14,7 @@ export default (
     <Route path="/weight" component={Weight}></Route>
     <Route path="/goals" component={Goals}></Route>
     <Route path="/equipment" component={Equipment}></Route>
+    <Route path="/wizard" component={WeightWizard}></Route>
     
 
         

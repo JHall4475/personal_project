@@ -1,10 +1,19 @@
 import React from 'react';
+import {Link, withRouter} from 'react-router-dom';
 
 function Weight(){
 
     return(
-        <div>Weight</div>
+        <div>Weight
+        <br></br>
+        <Link className="weightwizard" to='/wizard'>
+        
+        <p>Wizard</p>
+        </Link>
+        
+
+        </div>
     )
 }
 
-export default Weight;
+export default withRouter(Weight);
