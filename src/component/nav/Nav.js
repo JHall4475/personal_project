@@ -1,11 +1,22 @@
 import React from 'react';
 //import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
+import axios from 'axios';
+
+
 
 
 
 
 function Nav(props) {
+    const logoutUser = () => {
+        axios.post('/api/logoutUser')
+        .then((response) => {
+            console.log(response.data)
+            props.history.push('/')
+        })
+        }
+
     if(props.location.pathname !== '/'){
         return (
             <div>
@@ -22,6 +33,9 @@ function Nav(props) {
             <Link className="goals" to='/goals'>
             <span>Goals</span>
             </Link>
+
+            <button 
+            onClick={() => logoutUser()}>Logout</button>
             </div>
         )
  }else{

@@ -10,6 +10,18 @@ const port = 8080;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(session({
+    resave: true,
+    saveUninitialized: false,
+    secret: process.env.SESSION_SECRET,
+}))
+app.use((req, res, next) => {
+    console.log("Session");
+    console.log(req.session)
+    console.log("BODY")
+    console.log(req.body)
+     next();
+})
 
 massive(process.env.DATABASE_STRING)
 .then(db => {
@@ -20,9 +32,18 @@ massive(process.env.DATABASE_STRING)
     console.log('Database connection error', err)
 })
 
+const requireAuth = (req, res, next) => {
+    if (!req.session.user) {
+        res.status(401).json("Not Logged in")
+    } else {
+        next();
+    }
+}
+
 app.post('/api/register', controller.register)
 app.post('/api/login', controller.loginUser)
-
+app.post('/api/logoutUser', controller.logoutUser)
+app.post('/api/weight/post', controller.weightPost)
 
 app.get('/health', (req, res) => {
     return res.send('ok')

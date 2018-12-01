@@ -8,7 +8,7 @@ function Weight(){
         <br></br>
         <Link className="weightwizard" to='/wizard'>
         
-        <p>Wizard</p>
+        <p>Add Weight Entry</p>
         </Link>
         
 

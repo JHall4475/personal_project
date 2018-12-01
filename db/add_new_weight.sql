@@ -1,0 +1,1 @@
+INSERT INTO weight (date, weight) VALUES ($1, $2)

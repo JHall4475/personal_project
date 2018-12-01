@@ -1,25 +1,28 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import axios from 'axios';
+
 
 class WeightWizard extends Component {
     
     state ={
-        date: '',
-        weight:0,
+        date:'',
+        weight:'',
     }
 
-    
     componentDidMount(){
         this.dateOfToday();
         
     }
 
+   
+
     dateOfToday = () => {
-        var today = new Date(),
-            dateToday = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-            console.log(dateToday)
-            this.setState({date: dateToday})
-    }
+        var moment = require('moment');
+        var today = moment().format('YYYY-MM-DD').toString();
+        console.log(today)
+            this.setState({date: today})
+            }
     
 
     onInputChangeDate = (e) => {
@@ -30,6 +33,20 @@ class WeightWizard extends Component {
         this.setState({weight : e.target.value})
     }
 
+    goBack(path) {
+        this.props.history.push(path);
+    }
+
+    submitWeightEntry = () => {
+        axios.post('/api/weight/post', {
+            date: this.state.date,
+            weight: this.state.weight,
+        })
+        .then((response) => {
+            console.log(response.data)
+            this.goBack('../weight')
+        })
+    }
 
 
     
@@ -48,7 +65,7 @@ class WeightWizard extends Component {
                     name='date'
                     
                 ></input>
-                <script></script>
+                
                 <br></br>
                 <br></br>
                 <div>Current Weight</div>
@@ -57,12 +74,17 @@ class WeightWizard extends Component {
                     value={this.state.weight}
                     type='number'
                     title='Weight'
+                    // min='50'
+                    // max='500'
+                    
                 ></input>
 
                 <br></br>
                 <br></br>
 
-                <button>Submit</button>
+                <button
+                onClick={this.submitWeightEntry}
+                >Submit</button>
 
             </div>
         )

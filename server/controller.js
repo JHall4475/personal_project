@@ -43,5 +43,16 @@ module.exports = {
             res.status(500).send(err)
         })
     },
+    logoutUser: (req, res) => {
+        delete req.session.user;
+        res.status(200).json("Logged out")
+    },
+    
+    weightPost: (req, res) => {
+        const db = req.app.get('db')
+        db.add_new_weight([req.body.date, req.body.weight])
+        console.log(req.body)
+        res.status(200).send("Successfully added weight entry")
+    },
 
 }
