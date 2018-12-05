@@ -6,6 +6,7 @@ import Goals from '../src/component/goals/Goals';
 import Auth from '../src/component/auth/Auth';
 import Equipment from './component/workout/Equipment';
 import WeightWizard from './component/weight/WeightWizard';
+import BasalMetRate from './component/goals/BasalMetRate';
 
 export default (
     <Switch>
@@ -15,7 +16,7 @@ export default (
     <Route path="/goals" component={Goals}></Route>
     <Route path="/equipment" component={Equipment}></Route>
     <Route path="/wizard" component={WeightWizard}></Route>
-    
+    <Route path="/basalmetrate" component={BasalMetRate}></Route>
 
         
     </Switch>
