@@ -27,7 +27,7 @@ function Nav(props) {
             <span>Workout</span>
             
             </Link>
-            <Link className="weight" to='/weight'>
+            <Link className="weight" to='/weight' boolean="/">
             <span>Weight</span>
             </Link>
             <Link className="goals" to='/goals'>

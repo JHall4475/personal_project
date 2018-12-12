@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -85,7 +85,9 @@ class WeightWizard extends Component {
                 <button
                 onClick={this.submitWeightEntry}
                 >Submit</button>
-
+                {/* <button onClick={this.goBack('../weight')}>Cancel</button> */}
+                <Link className="weight" to='/weight'>
+                <p>Cancel</p></Link>
             </div>
         )
     }

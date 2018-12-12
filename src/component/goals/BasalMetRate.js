@@ -6,9 +6,10 @@ class BasalMetRate extends Component {
     state = {
         gender: '',
         heightFeet: 5,
-        heightInches: '',
-        weight: '',
-        age: ''
+        heightInches: 0,
+        weight: 0,
+        age: 0,
+        bmr: 0
     }
 
     onChangeHeight = (e) => {
@@ -16,6 +17,16 @@ class BasalMetRate extends Component {
     }
     onChangeInches = (e) => {
         this.setState({heightInches: e.target.value})
+    }
+
+    harrisBenedict = () => {
+        let feetToInches = (this.state.heightFeet * 12) 
+        //function jared function
+        let totalHeight = (feetToInches + this.state.heightInches)
+        console.log('totalHeight:', totalHeight)
+        let totalBMR = (66 + (6.3 * this.state.weight) + (12.9 * totalHeight) - (6.8 * this.state.age) )
+        console.log(totalBMR)
+        
     }
 
 
@@ -40,7 +51,7 @@ class BasalMetRate extends Component {
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
-                            <option selected value="5">5</option>
+                            <option defaultValue ="5">5</option>
                             <option>6</option>
                             <option>7</option>
                             <option>8</option>
@@ -74,7 +85,7 @@ class BasalMetRate extends Component {
                 <input></input>
 
                 <br></br>
-                <button>Calculate</button>
+                <button onClick={() => this.harrisBenedict()}>Calculate</button>
 
             </div>
         )
