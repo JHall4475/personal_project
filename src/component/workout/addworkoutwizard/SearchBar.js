@@ -10,12 +10,10 @@ class SearchBar extends Component {
     }
 
     onInputChange = () => {
-        this.setState({
-            query: this.search.value
-        }, () => {
+        this.setState({query: this.search.value},
+             () => {
             if (this.state.query && this.state.query.length >1) {
-                if (this.state)
-            } else 
+             (this.state)}
         })
     }
 

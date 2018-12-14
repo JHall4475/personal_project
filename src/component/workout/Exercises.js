@@ -4,7 +4,9 @@ import axios from 'axios';
 class Exercises extends Component {
 
     state={
-        exerciseList: []
+        exerciseList: [],
+        muscles:[],
+        specificMuscle:[],
     }
     
     getExercises = () => {
@@ -14,14 +16,31 @@ class Exercises extends Component {
             this.setState({exerciseList: exerciseList.data.results})
         })
     }
+
+    getMuscles = () => {
+        axios.get('https://wger.de/api/v2/muscle')
+        .then(muscles => {
+            console.log(muscles.data.results)
+            this.setState({muscles: muscles.data.results})
+        })
+    }
     
+    searchByMuscle = (id) => {
+        axios.get(`https://wger.de/api/v2/exercise/?muscles=${id}&status=2&language=2&limit=50
+        `)
+        .then(specificMuscle => {
+            console.log(specificMuscle)
+            this.setState({specificMuscle: specificMuscle.data.results})
+        })
+    }
+
 
 
     render() {
         return (
             <div>
             <button onClick={() => this.getExercises()}>Get Exercises </button>
-            Exercises
+            Create Workout by Exercises
             {this.state.exerciseList.map(exercise => {
                 return (
                     <div>
@@ -33,6 +52,28 @@ class Exercises extends Component {
                     </div>
                 )
                 
+            })}
+
+             <button onClick={() => this.getMuscles()}>Search by Muscles </button>
+            Muscles
+            {this.state.muscles.map(muscles => {
+                return (
+                    <div>
+                        {console.log(muscles)}
+                    <button onClick={() => this.searchByMuscle(muscles.id)}>{muscles.name}</button>
+                    </div>
+                )
+                
+            })}
+
+            {this.state.specificMuscle.map(muscle => {
+                return (
+                    <div>
+                        <p>{muscle.name}</p>
+                        <p>{muscle.description}</p>
+                        <button>Add to Workout</button>
+                    </div>
+                )
             })}
 
             </div>

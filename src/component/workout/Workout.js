@@ -8,10 +8,10 @@ function Workout(){
             Workout
         <br></br>
         <Link className="equipment" to='/equipment'>
-        <p>Equipment</p>
+        <p>Create Workout by Equipment</p>
         </Link>
         <Link className="exercises" to='/exercises'>
-        <p>Exercises</p>
+        <p>Create Workout by Exercises</p>
         </Link>
         </div>
     )

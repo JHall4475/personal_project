@@ -1,0 +1,14 @@
+/* textarea, select, input, button { outline: none; } */
+
+
+.equipmentDiv {
+    display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  background-color: blue
+}
+
+.equip-btn {
+    display: flex;
+    flex-direction: row;
+}
