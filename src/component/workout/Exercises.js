@@ -40,7 +40,7 @@ class Exercises extends Component {
         return (
             <div>
             <button onClick={() => this.getExercises()}>Get Exercises </button>
-            Create Workout by Exercises
+            Create Workout by Muscles
             {this.state.exerciseList.map(exercise => {
                 return (
                     <div>

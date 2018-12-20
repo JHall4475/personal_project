@@ -54,5 +54,14 @@ module.exports = {
         console.log(req.body)
         res.status(200).send("Successfully added weight entry")
     },
+    addToWorkout: (req, res) => {
+        const db = req.app.get('db')
+        db.add_to_workout([req.body.name, req.body.description])
+        console.log(req.body)
+        res.status(200).send("Successfully added to Workout")
+        .catch(err => {
+            return res.send(err)
+        })
+    }
 
 }

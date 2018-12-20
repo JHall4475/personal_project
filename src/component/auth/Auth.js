@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 
 class Auth extends Component {
 
@@ -21,8 +23,13 @@ class Auth extends Component {
             password: this.state.password
         })
         .then(() => {
+            
             this.props.history.push('/dashboard')
+            toast.success(`Welcome `)
         })
+        // .catch(() => {
+        //     toast.error(`Invalid Username or Password`);
+        // })
     }
 
     registerNewUser(){
@@ -40,6 +47,7 @@ class Auth extends Component {
     render(){
         return(
             <div>
+                
                 <p>Auth</p>
                 <input
                 onChange={this.onInputChangeUsername}

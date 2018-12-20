@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 
 class WeightWizard extends Component {
@@ -45,6 +46,7 @@ class WeightWizard extends Component {
         .then((response) => {
             console.log(response.data)
             this.goBack('../weight')
+            toast.success(`Successfully added weight entry`)
         })
     }
 

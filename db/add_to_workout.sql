@@ -1,0 +1,1 @@
+INSERT INTO workout (name, description) VALUES ($1, $2)
