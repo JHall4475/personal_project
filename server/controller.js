@@ -61,6 +61,12 @@ module.exports = {
         console.log(req.body)
         res.status(200).send("Successfully added to Workout")
        
+    },
+    weightEntries: (req, res) => {
+        const db = req.app.get('db')
+        db.get_weight_entries()
+        console.log(req.body)
+        res.status(200).send("Found Weight Entries")
     }
 
 }

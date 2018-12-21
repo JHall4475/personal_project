@@ -13,7 +13,11 @@ class Weight extends Component{
     // )
 
     // getWeightEntries = () => {
-    //     axios.get('/api/')
+    //     axios.get('/api/weight/entries')
+    //      .then(entries => {
+    //      console.log(entries)
+    //      this.setState({weightEntries: entries})
+    //})
     // }
 
 
