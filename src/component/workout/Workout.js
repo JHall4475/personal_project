@@ -8,10 +8,10 @@ function Workout(){
         <div>
             Workout
         <br></br>
-        <Link className="equipment" to='/equipment'>
+        <Link className="component-link" to='/equipment'>
         <p>Create Workout by Equipment</p>
         </Link>
-        <Link className="exercises" to='/exercises'>
+        <Link className="component-link" to='/exercises'>
         <p>Create Workout by Exercises</p>
         </Link>
         </div>

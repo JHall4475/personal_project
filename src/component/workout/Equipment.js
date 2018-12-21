@@ -11,11 +11,22 @@ class Equipment extends Component {
         equipmentList: [],
         specificExercise: [],
         muscles: [],
+        userProfile:[],
     }
 
 
     componentDidMount() {
         this.getEquipmentList()
+        this.getUserProfile()
+    }
+
+    getUserProfile = () => {
+        axios.get('/api/user')
+        .then(user => {
+            console.log(user.data)
+            this.setState({userProfile: user.data})
+           
+        })
     }
 
     getEquipmentList = () => {
@@ -37,10 +48,11 @@ class Equipment extends Component {
     }
 
     postToWorkout = (workout) => {
-        console.log("post to workout name:", workout)
+        console.log("userProfileId:", this.state.userProfile.id)
         axios.put('/api/workout/post', {
             name: workout.name,
-            description: workout.description
+            description: workout.description,
+            userId: this.state.userProfile.id
         })
         .then((response) => {
             console.log(response.data)

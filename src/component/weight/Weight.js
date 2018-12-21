@@ -21,7 +21,7 @@ class Weight extends Component{
         return(
         <div>Weight
         <br></br>
-        <Link className="weightwizard" to='/wizard'>
+        <Link className="component-link" to='/wizard'>
         
         <p>Add Weight Entry</p>
         </Link>

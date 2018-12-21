@@ -7,7 +7,7 @@ function Goals(){
     return(
         <div>Goals
         <br></br>
-        <Link className="basalmetrate" to="/basalmetrate">
+        <Link className="component-link" to="/basalmetrate">
         <p>Basal Metabolic Rate </p>
         </Link>
 
