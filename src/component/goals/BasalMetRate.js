@@ -24,7 +24,7 @@ class BasalMetRate extends Component {
         //function jared function
         let totalHeight = (feetToInches + this.state.heightInches)
         console.log('totalHeight:', totalHeight)
-        let totalBMR = (66 + (6.3 * this.state.weight) + (12.9 * totalHeight) - (6.8 * this.state.age) )
+        let totalBMR = (66 + (6.3 * Number(this.state.weight)) + (12.9 * totalHeight) - (6.8 * this.state.age) )
         console.log(totalBMR)
         
     }

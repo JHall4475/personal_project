@@ -2,6 +2,7 @@ import React from 'react';
 //import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
+import "../nav/nav.css"
 
 
 
@@ -19,23 +20,29 @@ function Nav(props) {
 
     if(props.location.pathname !== '/'){
         return (
-            <div>
-                nav
+            <div className="nav-wrapper">
+                <div className="nav-items">
                 <br></br>
                 {/* {console.log(props)} */}
-            <Link className="workout" to='/workout' >
-            <span>Workout</span>
+                <button 
+            onClick={() => logoutUser()}>Logout</button>
+            <br></br>
+            <Link className="nav-link" to='/workout' >
+            <p>Workout</p>
             
             </Link>
-            <Link className="weight" to='/weight' boolean="/">
-            <span>Weight</span>
+            <Link className="nav-link" to='/weight' boolean="/">
+            <p>Weight</p>
             </Link>
-            <Link className="goals" to='/goals'>
-            <span>Goals</span>
+            <Link className="nav-link" to='/goals'>
+            <p>Goals</p>
+            </Link>
+            <Link className="nav-link" to='/dashboard'>
+            <p>Dashboard</p>
             </Link>
 
-            <button 
-            onClick={() => logoutUser()}>Logout</button>
+            
+            </div>
             </div>
         )
  }else{

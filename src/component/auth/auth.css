@@ -1,0 +1,32 @@
+textarea, select, input, button { outline: none; }
+
+
+
+
+.auth-wrapper {
+   
+    height: 100vh;
+    width:100%;
+    background-color: aqua;
+    background: url(../assets/athlete-barbell-bodybuilder-949128.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.auth-container {
+    display: flex;
+    height: 50vh;
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+.auth-content {
+    display:flex;
+    align-items: center;
+    flex-flow: column;
+    justify-content: flex-end
+}

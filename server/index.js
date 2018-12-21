@@ -45,6 +45,9 @@ app.post('/api/login', controller.loginUser)
 app.post('/api/logoutUser', controller.logoutUser)
 app.post('/api/weight/post', controller.weightPost)
 app.put('/api/workout/post', controller.addToWorkout)
+app.get('/api/user', (req, res) => {
+    res.send(req.session.user)
+})
 
 app.get('/health', (req, res) => {
     return res.send('ok')

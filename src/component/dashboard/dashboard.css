@@ -1,0 +1,9 @@
+.dashboard-wrapper {
+    height: 100vh;
+    width:100%;
+    background-color: aqua;
+    background: url(../assets/athlete-barbell-bodybuilder-949128.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

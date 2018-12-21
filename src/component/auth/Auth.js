@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import './auth.css';
 
 
 class Auth extends Component {
@@ -27,9 +28,9 @@ class Auth extends Component {
             this.props.history.push('/dashboard')
             toast.success(`Welcome `)
         })
-        // .catch(() => {
-        //     toast.error(`Invalid Username or Password`);
-        // })
+        .catch(() => {
+            toast.error(`Invalid Username or Password`);
+        })
     }
 
     registerNewUser(){
@@ -46,7 +47,9 @@ class Auth extends Component {
 
     render(){
         return(
-            <div>
+            <div className="auth-wrapper">
+            <div className="auth-container">
+            <div className="auth-content"> 
                 
                 <p>Auth</p>
                 <input
@@ -66,6 +69,8 @@ class Auth extends Component {
 
                 <button onClick={() => this.login()}>Login</button>
                 <button onClick={() => this.registerNewUser()}>Register</button>
+                </div>
+            </div>
             </div>
         )
     }

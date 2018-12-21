@@ -3,6 +3,7 @@ import axios from 'axios';
 import {addToWorkout} from '../../ducks/actions';
 import {connect} from 'react-redux';
 import '../workout/equipment.scss';
+import { toast } from 'react-toastify';
 
 class Equipment extends Component {
 
@@ -35,15 +36,15 @@ class Equipment extends Component {
             
     }
 
-    postToWorkout = () => {
-        console.log("post to workout name:", this.state.specificExercise)
+    postToWorkout = (workout) => {
+        console.log("post to workout name:", workout)
         axios.put('/api/workout/post', {
-            name: this.state.specificExercise.name,
-            description: this.state.specificExercise.description
-            
+            name: workout.name,
+            description: workout.description
         })
         .then((response) => {
             console.log(response.data)
+            toast.success("Successfully added to workout")
         })
     }
     
@@ -54,11 +55,11 @@ class Equipment extends Component {
         return (
             <div >
                 {/* <button onClick={() => this.getEquipmentList()}>Search by Equipment</button> */}
-                Equipment
+                
             <div className="headerContainer">
                     {this.state.equipmentList.map(equip => {
                         return (
-                            <div className="containerDivHeader">
+                            <div className="containerDivHeader" key={equip.id}>
                                 <div className="equipmentDiv">
                                     
                                     <button className="equip-btn" onClick={() => this.searchByEquipment(equip.id)}>{equip.name}</button>
@@ -68,15 +69,15 @@ class Equipment extends Component {
                     })}
                 </div>
 
-                {this.state.specificExercise.map(exercise => {
+                {this.state.specificExercise.map((exercise, index) => {
                     return (
-                        <div className="containerDiv">
+                        <div className="containerDiv" key={exercise.id}>
                             <div className="exerciseByEquipment">
                             
                                 <p>{exercise.name}</p>
                                 <p>{exercise.description}</p>
                               
-                                <button onClick={this.postToWorkout}>Add to workout</button>
+                                <button onClick={() => this.postToWorkout(this.state.specificExercise[index])}>Add to workout</button>
                             </div>
                         </div>
                     )

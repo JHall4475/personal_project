@@ -30,6 +30,7 @@ module.exports = {
                 }
                 if(isCorrectPassword){
                     console.log('correct')
+                    req.session.user = user[0]
                     res.send('Login Successful')
                 }
                 else{

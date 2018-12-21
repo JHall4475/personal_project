@@ -8,6 +8,7 @@ import Equipment from './component/workout/Equipment';
 import WeightWizard from './component/weight/WeightWizard';
 import BasalMetRate from './component/goals/BasalMetRate';
 import Exercises from './component/workout/Exercises'
+import Dashboard from './component/dashboard/Dashboard';
 
 export default (
     <Switch>
@@ -19,6 +20,7 @@ export default (
     <Route path="/wizard" component={WeightWizard}></Route>
     <Route path="/basalmetrate" component={BasalMetRate}></Route>
     <Route path="/exercises" component={Exercises}></Route>
+    <Route path="/dashboard" component={Dashboard}></Route>
         
     </Switch>
 )

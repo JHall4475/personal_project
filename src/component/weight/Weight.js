@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
+import axios from 'axios';
 
-function Weight(){
+class Weight extends Component{
+    
+    state={
+        weightEntries:[]
+    }
 
-    return(
+    // componentDidMount(
+
+    // )
+
+    // getWeightEntries = () => {
+    //     axios.get('/api/')
+    // }
+
+
+    render(){
+        return(
         <div>Weight
         <br></br>
         <Link className="weightwizard" to='/wizard'>
@@ -13,7 +28,9 @@ function Weight(){
         
 
         </div>
-    )
+        )
+    
+}
 }
 
 export default withRouter(Weight);
