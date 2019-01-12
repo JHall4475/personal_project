@@ -67,6 +67,22 @@ module.exports = {
         db.get_weight_entries()
         console.log(req.body)
         res.status(200).send("Found Weight Entries")
+    },
+    retrieveWorkout: (req, res) => {
+        const db = req.app.get('db')
+        db.get_workout()
+        .then(result => {
+            return res.status(200).send(result)
+        })
+        .catch(err => {
+            return res.send(err)
+        })
+    },
+    deleteWorkoutItem: (req, res) => {
+        const db = req.app.get('db')
+        console.log(req.params.id)
+        db.delete_workout_item([req.params.id])
+        res.send("Successfully deleted Workout Item")
     }
 
 }

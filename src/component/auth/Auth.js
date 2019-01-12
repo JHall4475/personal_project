@@ -51,7 +51,8 @@ class Auth extends Component {
             <div className="auth-container">
             <div className="auth-content"> 
                 
-                <p>Auth</p>
+                <p>Welcome to eWorkoutManager</p>
+                <p>Please Sign in or Register</p>
                 <input
                 onChange={this.onInputChangeUsername}
                 value={this.state.username}

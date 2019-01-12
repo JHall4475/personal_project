@@ -88,7 +88,7 @@ class WeightWizard extends Component {
                 onClick={this.submitWeightEntry}
                 >Submit</button>
                 {/* <button onClick={this.goBack('../weight')}>Cancel</button> */}
-                <Link className="weight" to='/weight'>
+                <Link className="component-link" to='/weight'>
                 <p>Cancel</p></Link>
             </div>
         )

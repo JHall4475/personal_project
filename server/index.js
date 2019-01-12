@@ -32,7 +32,7 @@ massive(process.env.DATABASE_STRING)
     console.log('Database connection error', err)
 })
 
-const requireAuth = (req, res, next) => {
+let requireAuth = (req, res, next) => {
     if (!req.session.user) {
         res.status(401).json("Not Logged in")
     } else {
@@ -45,9 +45,11 @@ app.post('/api/login', controller.loginUser)
 app.post('/api/logoutUser', controller.logoutUser)
 app.post('/api/weight/post', controller.weightPost)
 app.put('/api/workout/post', controller.addToWorkout)
+app.get('/api/workout/retrieve', controller.retrieveWorkout)
 app.get('/api/user', (req, res) => {
     res.send(req.session.user)
 })
+app.delete('/api/workout/:id', controller.deleteWorkoutItem)
 app.get('/api/weight/entries', controller.weightEntries)
 
 app.get('/health', (req, res) => {

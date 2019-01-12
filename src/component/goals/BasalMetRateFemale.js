@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import BasalMetRateFemale from './BasalMetRateFemale';
 
-class BasalMetRate extends Component {
+class BasalMetRateFemale extends Component {
 
 
     state = {
-        gender: 'Male',
+        gender: 'Female',
         heightFeet: 5,
         heightInches: 0,
         weight: 0,
@@ -32,7 +31,7 @@ class BasalMetRate extends Component {
        console.log(totalHeight)
        console.log(6.23*Number(this.state.weight))
        console.log(12.7 * totalHeight)
-       let bmr = 66+(6.23*Number(this.state.weight))+(12.7 * totalHeight) - (6.8 * Number(this.state.age))
+       let bmr = 655+(4.35*Number(this.state.weight))+(4.7 * totalHeight) - (4.7 * Number(this.state.age))
         console.log(bmr)
         
         let roundedBMR = Math.round(bmr)
@@ -43,10 +42,9 @@ class BasalMetRate extends Component {
     render() {
         return (
             <div>
-                Basal Metabolic Rate Calculator
-                <br></br>
-              <p>Male</p> 
-                
+               
+               <p>Female</p>
+               
                 <form>
                     <label>
                         Height in Feet
@@ -100,11 +98,10 @@ class BasalMetRate extends Component {
                 <br></br>
                 <button onClick={() => this.harrisBenedict()}>Calculate</button>
             <div>Your BasalMetRate is : {this.state.basalMetRate}</div>
-            <BasalMetRateFemale></BasalMetRateFemale>
 
             </div>
         )
     }
 }
 
-export default BasalMetRate;
+export default BasalMetRateFemale;
