@@ -9,10 +9,12 @@ class WeightWizard extends Component {
     state ={
         date:'',
         weight:'',
+        userProfile:[],
     }
 
     componentDidMount(){
         this.dateOfToday();
+        this.getUserProfile();
         
     }
 
@@ -23,6 +25,15 @@ class WeightWizard extends Component {
         var today = moment().format('YYYY-MM-DD').toString();
         console.log(today)
             this.setState({date: today})
+            }
+
+     getUserProfile = () => {
+          axios.get('/api/user')
+            .then(user => {
+            console.log(user.data)
+             this.setState({userProfile: user.data})
+                   
+                })
             }
     
 
@@ -42,6 +53,7 @@ class WeightWizard extends Component {
         axios.post('/api/weight/post', {
             date: this.state.date,
             weight: this.state.weight,
+            userId: this.state.userProfile.id
         })
         .then((response) => {
             console.log(response.data)

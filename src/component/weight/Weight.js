@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
+import WeightDisplay from '../weight/WeightDisplay';
 
 class Weight extends Component{
     
@@ -8,17 +9,17 @@ class Weight extends Component{
         weightEntries:[]
     }
 
-    // componentDidMount(
+    componentDidMount = () => {
+        this.getWeightEntries()
+    }
 
-    // )
-
-    // getWeightEntries = () => {
-    //     axios.get('/api/weight/entries')
-    //      .then(entries => {
-    //      console.log(entries)
-    //      this.setState({weightEntries: entries})
-    //})
-    // }
+    getWeightEntries = () => {
+        axios.get('/api/weight/entries')
+         .then(entries => {
+         console.log(entries)
+         this.setState({weightEntries: entries.data})
+    })
+    }
 
 
     render(){
@@ -29,6 +30,20 @@ class Weight extends Component{
         
         <p>Add Weight Entry</p>
         </Link>
+
+        {this.state.weightEntries.map (entries => {
+            return(
+                <div key={entries.id}>
+                <WeightDisplay
+                date={entries.date}
+                weight={entries.weight}
+                deleteWeightEntry={() => this.deleteWeightEntry(entries.entry_number)}
+                ></WeightDisplay>
+                
+                
+                </div>
+            )
+        })}
         
 
         </div>

@@ -6,8 +6,9 @@ class WorkoutDisplay extends Component {
         const{description, name}=this.props
         return(
             <div>
-                <p>Description {description}</p>
-                <p>Name {name}</p>
+                <p>Name: {name}</p>
+                <p>Description: {description}</p>
+                
                 <button onClick={() => this.props.deleteWorkoutItem()}>Delete</button>
             </div>
         )

@@ -1,1 +1,1 @@
-SELECT * FROM weight 
+SELECT * FROM weight ORDER BY date DESC LIMIT 5;

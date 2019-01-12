@@ -1,1 +1,1 @@
-INSERT INTO weight (date, weight) VALUES ($1, $2)
+INSERT INTO weight (date, weight, user_id)  VALUES ($1, $2, $3)

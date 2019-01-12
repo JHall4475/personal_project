@@ -65,8 +65,12 @@ module.exports = {
     weightEntries: (req, res) => {
         const db = req.app.get('db')
         db.get_weight_entries()
-        console.log(req.body)
-        res.status(200).send("Found Weight Entries")
+        .then(result => {
+            return res.status(200).send(result)
+        })
+        .catch(err => {
+            return res.send(err)
+        })
     },
     retrieveWorkout: (req, res) => {
         const db = req.app.get('db')
