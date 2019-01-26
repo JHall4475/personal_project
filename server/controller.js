@@ -87,6 +87,7 @@ module.exports = {
         console.log(req.params.id)
         db.delete_workout_item([req.params.id])
         res.send("Successfully deleted Workout Item")
-    }
+    },
+
 
 }

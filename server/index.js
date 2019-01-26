@@ -51,7 +51,6 @@ app.get('/api/user', (req, res) => {
 })
 app.delete('/api/workout/:id', controller.deleteWorkoutItem)
 app.get('/api/weight/entries', controller.weightEntries)
-
 app.get('/health', (req, res) => {
     return res.send('ok')
 })

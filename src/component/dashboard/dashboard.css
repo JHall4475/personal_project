@@ -7,3 +7,9 @@
     background-position: center;
     background-size: cover;
 }
+
+.workout-wrapper{
+    display: flex;
+    width: 33%;
+    flex-flow: column;
+}

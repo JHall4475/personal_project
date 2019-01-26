@@ -11,11 +11,13 @@ class Dashboard extends Component {
     state = {
         workoutHolder: [],
         userProfile: [],
+        quotes:[],
     }
 
 componentDidMount = () => {
    this.getUserProfile()
     this.getWorkout()
+    // this.getQuotes()
 }
 
 getUserProfile = () => {
@@ -26,6 +28,14 @@ getUserProfile = () => {
        
     })
 }
+
+// getQuotes = () => {
+//     axios.get('api/quotes')
+//     .then( quotes => {
+//         console.log("quotes:", quotes)
+//         //this.setState({quotes: quotes.data})
+//     })
+// }
 
 getWorkout = () => {
     axios.get('/api/workout/retrieve'
@@ -54,6 +64,11 @@ deleteWorkoutItem = (id) => {
 
                 <div>Profile Pic</div>
                 <div>Weight Entries</div>
+                <div>Quotes
+
+                </div>
+                <div className="workout-wrapper">
+               Current Workout
             {this.state.workoutHolder.map(items => {
                 return(
                     <div key={items.id}>
@@ -68,6 +83,7 @@ deleteWorkoutItem = (id) => {
                     </div>
                 )
             })}
+            </div>
                
                 
             </div>
