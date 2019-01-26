@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BasalMetRateFemale from './BasalMetRateFemale';
+import axios from 'axios';
 
 class BasalMetRate extends Component {
 
@@ -27,6 +28,7 @@ class BasalMetRate extends Component {
         this.setState({age: e.target.value})
     }
 
+
     harrisBenedict = () => {
        let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
        console.log(totalHeight)
@@ -37,6 +39,13 @@ class BasalMetRate extends Component {
         
         let roundedBMR = Math.round(bmr)
         this.setState({basalMetRate: roundedBMR})
+        axios.post('/api/basal/post', {
+            basalMetRate: this.state.basalMetRate
+        })
+        .then((response) => {
+            console.log(response.data)
+            
+        })
     }
 
 

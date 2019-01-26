@@ -1,7 +1,11 @@
 .nav-wrapper {
     background-color: #004E64;
     display: flex;
-    justify-content: flex-end
+    justify-content: flex-end;
+    height: 5vh;
+    width:100vw;
+    position: relative;
+    z-index: 10;
 
 }
 

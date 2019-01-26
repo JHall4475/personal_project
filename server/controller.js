@@ -51,7 +51,7 @@ module.exports = {
     
     weightPost: (req, res) => {
         const db = req.app.get('db')
-        db.add_new_weight([req.body.date, req.body.weight])
+        db.add_new_weight([req.body.user_id, req.body.date, req.body.weight])
         console.log(req.body)
         res.status(200).send("Successfully added weight entry")
     },
@@ -75,6 +75,16 @@ module.exports = {
     retrieveWorkout: (req, res) => {
         const db = req.app.get('db')
         db.get_workout()
+        .then(result => {
+            return res.status(200).send(result)
+        })
+        .catch(err => {
+            return res.send(err)
+        })
+    },
+    retrieveWeight: (req, res) => {
+        const db = req.app.get('db')
+        db.get_weight_entries()
         .then(result => {
             return res.status(200).send(result)
         })

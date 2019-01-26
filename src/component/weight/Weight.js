@@ -24,12 +24,8 @@ class Weight extends Component{
 
     render(){
         return(
-        <div>Weight
+        <div>Current Weight Log
         <br></br>
-        <Link className="component-link" to='/wizard'>
-        
-        <p>Add Weight Entry</p>
-        </Link>
 
         {this.state.weightEntries.map (entries => {
             return(
@@ -44,7 +40,9 @@ class Weight extends Component{
                 </div>
             )
         })}
-        
+         <Link className="component-link" to='/wizard'>
+        <p>Add Weight Entry</p>
+        </Link>
 
         </div>
         )

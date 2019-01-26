@@ -30,7 +30,7 @@ class WeightWizard extends Component {
      getUserProfile = () => {
           axios.get('/api/user')
             .then(user => {
-            console.log(user.data)
+            console.log("user:", user.data)
              this.setState({userProfile: user.data})
                    
                 })
@@ -51,9 +51,10 @@ class WeightWizard extends Component {
 
     submitWeightEntry = () => {
         axios.post('/api/weight/post', {
+            user_id: this.state.userProfile.id,
             date: this.state.date,
             weight: this.state.weight,
-            userId: this.state.userProfile.id
+           
         })
         .then((response) => {
             console.log(response.data)

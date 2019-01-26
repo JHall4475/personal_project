@@ -4,6 +4,8 @@ import route from '../../../src/route';
 import './dashboard.css'
 import axios from 'axios';
 import WorkoutDisplay from '../workout/WorkoutDisplay';
+import WeightDisplay from '../weight/WeightDisplay';
+import Weight from '../weight/Weight';
 
 
 class Dashboard extends Component {
@@ -12,18 +14,21 @@ class Dashboard extends Component {
         workoutHolder: [],
         userProfile: [],
         quotes:[],
+        weightEntries:[],
+
     }
 
 componentDidMount = () => {
    this.getUserProfile()
     this.getWorkout()
+    this.getWeight()
     // this.getQuotes()
 }
 
 getUserProfile = () => {
     axios.get('/api/user')
     .then(user => {
-        console.log(user.data)
+        //console.log(user.data)
         this.setState({userProfile: user.data})
        
     })
@@ -47,6 +52,13 @@ getWorkout = () => {
         this.setState({workoutHolder: workouts.data})
     })
 }
+getWeight = () => {
+    axios.get('/api/weight/retrieve')
+    .then(entries => {
+        console.log("weight:", entries)
+        this.setState({weightEntries: entries.data})
+    })
+}
 
 deleteWorkoutItem = (id) => {
     console.log(id)
@@ -62,16 +74,17 @@ deleteWorkoutItem = (id) => {
         return (
             <div className="dashboard-wrapper">
 
-                <div>Profile Pic</div>
-                <div>Weight Entries</div>
-                <div>Quotes
-
-                </div>
-                <div className="workout-wrapper">
+                <div></div>
+                
+                <div>Quotes</div>
+                <br></br>
+                <div className="display-container">
+                
+                <div className="workout-container">
                Current Workout
-            {this.state.workoutHolder.map(items => {
-                return(
-                    <div key={items.id}>
+                    {this.state.workoutHolder.map(items => {
+                    return(
+                     <div key={items.id}>
                         <WorkoutDisplay
                         name={items.name}
                         description={items.description}
@@ -84,8 +97,27 @@ deleteWorkoutItem = (id) => {
                 )
             })}
             </div>
+            
+
+            <div className="goals-container">Goals</div>
+            <div className="weight-container">Weight Entries
+                {this.state.weightEntries.map(entries => {
+                    return(
+                        <div key={entries.id2}> 
+                        <WeightDisplay
+                        
+                        date={entries.date}
+                        weight={entries.weight}
+                        
+                        ></WeightDisplay>
+                        
+                        </div>
+                    )
+                })}
+            
+            </div>
                
-                
+            </div>    
             </div>
         )
     }

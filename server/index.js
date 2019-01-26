@@ -54,6 +54,7 @@ app.get('/api/weight/entries', controller.weightEntries)
 app.get('/health', (req, res) => {
     return res.send('ok')
 })
+app.get('/api/weight/retrieve', controller.retrieveWeight)
 
 
 

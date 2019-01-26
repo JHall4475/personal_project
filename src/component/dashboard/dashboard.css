@@ -1,15 +1,54 @@
+*{
+    box-sizing: border-box;
+}
+
 .dashboard-wrapper {
-    height: 100vh;
+    display:flex;
+    height: fit-content;
     width:100%;
     background-color: aqua;
     background: url(../assets/athlete-barbell-bodybuilder-949128.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: relative;
+    will-change: over;
+    /* display: flex; */
 }
 
-.workout-wrapper{
+.display-container{
     display: flex;
+    height: 100vh;
+    backface-visibility: hidden;
+    position: relative;
+    will-change: auto;
+    padding: 1%;
+    background-color: rgba(52, 52, 52, 0.4);
+}
+
+.workout-container{
+    /* display: flex; */
     width: 33%;
+    /* flex-flow: column; */
+    padding: .05%;
+    overflow: scroll ;
+    height: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+}
+
+.goals-container{
+    /* display: flex; */
+    width:33%;
+    padding: .05%;
+    justify-content: center;
+}
+
+.weight-container{
+    /* display: flex; */
+    width: 33%;
+    padding: .05%;
     flex-flow: column;
 }
