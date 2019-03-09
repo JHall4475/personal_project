@@ -21,6 +21,14 @@ class Weight extends Component{
     })
     }
 
+    deleteWeightEntry = (id) => {
+        console.log(id)
+        axios.delete(`/api/weight/${id}`)
+        .then((response) => {
+            console.log(response.data)
+        })
+    }
+
 
     render(){
         return(
@@ -29,7 +37,7 @@ class Weight extends Component{
 
         {this.state.weightEntries.map (entries => {
             return(
-                <div key={entries.id}>
+                <div key={entries.id + entries.date}>
                 <WeightDisplay
                 date={entries.date}
                 weight={entries.weight}

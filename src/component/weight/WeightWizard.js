@@ -51,7 +51,7 @@ class WeightWizard extends Component {
 
     submitWeightEntry = () => {
         axios.post('/api/weight/post', {
-            user_id: this.state.userProfile.id,
+            id: this.state.userProfile.id,
             date: this.state.date,
             weight: this.state.weight,
            

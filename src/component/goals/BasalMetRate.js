@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import BasalMetRateFemale from './BasalMetRateFemale';
+// import BasalMetRateFemale from './BasalMetRateFemale';
 import axios from 'axios';
 
 class BasalMetRate extends Component {
 
 
     state = {
-        gender: 'Male',
+        selectedOption: "male",
         heightFeet: 5,
         heightInches: 0,
         weight: 0,
         age: 0,
-        basalMetRate: 0
+        basalMetRate: 0,
+        userProfile: [],
     }
+
+   componentDidMount=()=> {
+       this.getUserProfile()
+   }
+
+   getUserProfile= () => {
+       axios.get('/api/user')
+       .then(user => {
+        //    console.log("user", user)
+           this.setState({userProfile: user.data})
+       })
+   }
+    
 
     onChangeHeight = (e) => {
         this.setState({heightFeet: e.target.value})
@@ -27,7 +41,14 @@ class BasalMetRate extends Component {
     onChangeAge = (e) => {
         this.setState({age: e.target.value})
     }
-
+    handleOptionChange = (e) => {
+        this.setState({selectedOption: e.target.value})
+        }
+    calculateBmr = () => {
+        return this.state.selectedOption === "male" ? this.harrisBenedict()
+        : this.harrisBenedictFemale()
+    }
+    
 
     harrisBenedict = () => {
        let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
@@ -36,7 +57,6 @@ class BasalMetRate extends Component {
        console.log(12.7 * totalHeight)
        let bmr = 66+(6.23*Number(this.state.weight))+(12.7 * totalHeight) - (6.8 * Number(this.state.age))
         console.log(bmr)
-        
         let roundedBMR = Math.round(bmr)
         this.setState({basalMetRate: roundedBMR})
         axios.post('/api/basal/post', {
@@ -48,13 +68,48 @@ class BasalMetRate extends Component {
         })
     }
 
+    harrisBenedictFemale = () => {
+        let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
+        console.log(totalHeight)
+        console.log(6.23*Number(this.state.weight))
+        console.log(12.7 * totalHeight)
+        let bmr = Math.round(655+(4.35*Number(this.state.weight))+(4.7 * totalHeight) - (4.7 * Number(this.state.age)))
+         console.log(bmr)
+         this.setState({basalMetRate: bmr})
+    }
+
+
 
     render() {
         return (
             <div>
                 Basal Metabolic Rate Calculator
                 <br></br>
-              <p>Male</p> 
+                <form>
+               <div className="gender-form">
+               <label>
+                   Male
+                   <input
+                   type="radio"
+                   value= "male"
+                   checked={this.state.selectedOption === "male"}
+                   onChange={this.handleOptionChange}
+                   ></input>
+                   
+               </label>
+               </div>
+               <div className="gender-form">
+        <label>
+            Female
+            <input
+            type="radio"
+            value="female"
+            checked={this.state.selectedOption === "female"}
+            onChange={this.handleOptionChange}
+            ></input>
+        </label>
+               </div>
+            </form>
                 
                 <form>
                     <label>
@@ -107,9 +162,9 @@ class BasalMetRate extends Component {
                 ></input>
 
                 <br></br>
-                <button onClick={() => this.harrisBenedict()}>Calculate</button>
+                <button onClick={() => this.calculateBmr()}>Calculate</button>
             <div>Your BasalMetRate is : {this.state.basalMetRate}</div>
-            <BasalMetRateFemale></BasalMetRateFemale>
+            {/* <BasalMetRateFemale></BasalMetRateFemale> */}
 
             </div>
         )

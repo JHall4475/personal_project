@@ -1,4 +1,3 @@
-import { CommentActions } from "semantic-ui-react";
 
 export const initialState = {
 name:'',

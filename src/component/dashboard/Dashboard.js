@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import Nav from '../../../src/component/nav/Nav';
-import route from '../../../src/route';
 import './dashboard.css'
 import axios from 'axios';
 import WorkoutDisplay from '../workout/WorkoutDisplay';
 import WeightDisplay from '../weight/WeightDisplay';
-import Weight from '../weight/Weight';
 
 
 class Dashboard extends Component {
@@ -56,7 +53,7 @@ getWeight = () => {
     axios.get('/api/weight/retrieve')
     .then(entries => {
         console.log("weight:", entries)
-        this.setState({weightEntries: entries.data})
+         this.setState({weightEntries: entries.data})
     })
 }
 

@@ -1,0 +1,1 @@
+DELETE FROM weight WHERE entry_number = $1

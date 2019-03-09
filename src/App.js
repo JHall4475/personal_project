@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Nav from '../src/component/nav/Nav';
 import route from '../src/route';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 

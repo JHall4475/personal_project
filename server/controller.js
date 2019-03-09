@@ -28,7 +28,7 @@ module.exports = {
                     console.log('error')
                     return res.send('Error:', err)
                 }
-                else if(isCorrectPassword){
+                if(isCorrectPassword){
                     console.log('correct')
                     req.session.user = user[0]
                     res.send('Login Successful')
@@ -51,7 +51,7 @@ module.exports = {
     
     weightPost: (req, res) => {
         const db = req.app.get('db')
-        db.add_new_weight([req.body.user_id, req.body.date, req.body.weight])
+        db.add_new_weight([req.body.id, req.body.date, req.body.weight])
         console.log(req.body)
         res.status(200).send("Successfully added weight entry")
     },
@@ -97,6 +97,12 @@ module.exports = {
         //console.log(req.params.id)
         db.delete_workout_item([req.params.id])
         res.send("Successfully deleted Workout Item")
+    },
+    deleteWeightEntry: (req, res) => {
+        const db = req.app.get('db')
+        console.log(req.params.id)
+        db.delete_weight_entry([req.params.id])
+        res.send("Successfully deleted weight entry")
     },
     addBasalEntry:(req, res) => {
         const db = req.app.get('db')
