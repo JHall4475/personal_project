@@ -22,7 +22,6 @@ class App extends Component {
       draggable
       pauseOnHover={false}
       />
-       
        <Nav></Nav>
        {route}
       </div>

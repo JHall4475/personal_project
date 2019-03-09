@@ -25,7 +25,7 @@ componentDidMount = () => {
 getUserProfile = () => {
     axios.get('/api/user')
     .then(user => {
-        //console.log(user.data)
+        console.log("userData pulled in Dashboard.js:", user.data)
         this.setState({userProfile: user.data})
        
     })
@@ -100,7 +100,7 @@ deleteWorkoutItem = (id) => {
             <div className="weight-container">Weight Entries
                 {this.state.weightEntries.map(entries => {
                     return(
-                        <div key={entries.id2}> 
+                        <div key={entries.entry_number}> 
                         <WeightDisplay
                         
                         date={entries.date}

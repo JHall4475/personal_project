@@ -24,9 +24,9 @@ module.exports = {
         .then( (user => {
             console.log('user', user)
             bcrypt.compare(req.body.password, user[0].password, function(err, isCorrectPassword) {
-                if (err) {
+                if (!isCorrectPassword) {
                     console.log('error')
-                    return res.send('Error:', err)
+                    return res.status(500).send("error")
                 }
                 if(isCorrectPassword){
                     console.log('correct')
@@ -34,7 +34,7 @@ module.exports = {
                     res.send('Login Successful')
                 }
                 else{
-                    console.log('else')
+                    console.log(err)
                     res.send('Email or Password is wrong')
                 }
             })
