@@ -55,7 +55,7 @@ app.get('/health', (req, res) => {
     return res.send('ok')
 })
 app.get('/api/weight/retrieve', controller.retrieveWeight)
-
+app.post('/api/basal/post', controller.addBasalEntry)
 
 
 app.listen(port, function(){

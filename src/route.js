@@ -9,10 +9,12 @@ import WeightWizard from './component/weight/WeightWizard';
 import BasalMetRate from './component/goals/BasalMetRate';
 import Exercises from './component/workout/Exercises'
 import Dashboard from './component/dashboard/Dashboard';
+import CaloricNeeds from './component/goals/CaloricNeeds';
+import IdealWeight from './component/goals/IdealWeight';
 
 export default (
     <Switch>
-    <Route exact path='/' component={Auth}></Route>
+    <Route exact path="/" component={Auth}></Route>
     <Route path="/workout" component={Workout}></Route>
     <Route path="/weight" component={Weight}></Route>
     <Route path="/goals" component={Goals}></Route>
@@ -21,6 +23,7 @@ export default (
     <Route path="/basalmetrate" component={BasalMetRate}></Route>
     <Route path="/exercises" component={Exercises}></Route>
     <Route path="/dashboard" component={Dashboard}></Route>
-        
+    <Route path="/caloricNeeds" component={CaloricNeeds}></Route> 
+    <Route path="/idealWeight" component={IdealWeight}></Route>  
     </Switch>
 )

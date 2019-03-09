@@ -28,7 +28,7 @@ module.exports = {
                     console.log('error')
                     return res.send('Error:', err)
                 }
-                if(isCorrectPassword){
+                else if(isCorrectPassword){
                     console.log('correct')
                     req.session.user = user[0]
                     res.send('Login Successful')
@@ -94,10 +94,14 @@ module.exports = {
     },
     deleteWorkoutItem: (req, res) => {
         const db = req.app.get('db')
-        console.log(req.params.id)
+        //console.log(req.params.id)
         db.delete_workout_item([req.params.id])
         res.send("Successfully deleted Workout Item")
     },
+    addBasalEntry:(req, res) => {
+        const db = req.app.get('db')
+        db.add_basal_entry([])
+    }
 
 
 }
