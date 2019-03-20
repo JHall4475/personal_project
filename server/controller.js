@@ -23,7 +23,7 @@ module.exports = {
         db.get_user([req.body.username])
         .then( (user => {
             console.log('user', user)
-            bcrypt.compare(req.body.password, user[0].password, function(err, isCorrectPassword) {
+            bcrypt.compare(req.body.password, user[0].password, (err, isCorrectPassword) => {
                 if (!isCorrectPassword) {
                     console.log('error')
                     return res.status(500).send("error")

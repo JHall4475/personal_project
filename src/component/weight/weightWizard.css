@@ -1,14 +1,16 @@
-.goals-wrapper{
+.ww-wrapper{
     display: flex;
     height: 100vh;
     width: 100vw;
+    background-color: darkred;
     justify-content: center;
-    background-color: darkblue;
-    
+    align-items: center; 
 }
 
-.goals-container{
+.ww-container{
     display: flex;
-    position: relative;
     margin-top: 5vh;
+    flex-direction: column
+
+    
 }

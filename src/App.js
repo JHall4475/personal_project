@@ -10,21 +10,22 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <ToastContainer 
-      position="top-right"
-      autoClose={2500}
-      hideProgressBar={false}
-      newestOnTop
-      closeOnClick
-      rtl={false}
-      pauseOnVisibilityChange={false}
-      pauseOnFocusLoss={false}
-      draggable
-      pauseOnHover={false}
-      />
-       <Nav></Nav>
-       {route}
-      </div>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover={false}
+        />
+        <Nav></Nav>
+            {route}
+          </div>
     );
   }
 }

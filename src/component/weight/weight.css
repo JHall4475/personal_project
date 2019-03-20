@@ -1,0 +1,16 @@
+.weightpg-wrapper{
+display: flex;
+height: 100vh;
+width: 100vw;
+background-color: darkgreen;
+align-items: center;
+justify-content: center;
+}
+
+.weightpg-container{
+    display: flex;
+    height: 100vh;
+    margin-top: 10vh;
+    flex-direction: column;
+    padding: 2%;
+}

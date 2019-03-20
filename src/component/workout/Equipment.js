@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {addToWorkout} from '../../ducks/actions';
+import{getUserProfile} from '../../ducks/actions'
 import {connect} from 'react-redux';
 import '../workout/equipment.scss';
 import { toast } from 'react-toastify';
@@ -17,17 +18,21 @@ class Equipment extends Component {
 
     componentDidMount() {
         this.getEquipmentList()
-        this.getUserProfile()
+        this.getReduxProfile()
+        // this.getUserProfile()
     }
 
-    getUserProfile = () => {
-        axios.get('/api/user')
-        .then(user => {
-            console.log(user.data)
-            this.setState({userProfile: user.data})
-           
-        })
+    getReduxProfile= () => {
+        this.props.getUserProfile()
     }
+    // getUserProfile = () => {
+    //     axios.get('/api/user')
+    //     .then(user => {
+    //         console.log(user.data)
+    //         this.setState({userProfile: user.data})
+           
+    //     })
+    // }
 
     getEquipmentList = () => {
         axios.get('https://wger.de/api/v2/equipment')
@@ -40,7 +45,7 @@ class Equipment extends Component {
     searchByEquipment = (id) => {
         axios.get(`https://wger.de/api/v2/exercise/?equipment=${id}&status=2&language=2&limit=50`)
             .then(specificExercise => {
-                console.log(specificExercise.data.results)
+                // console.log(specificExercise.data.results)
                 this.setState({ specificExercise: specificExercise.data.results })
             }
             )
@@ -48,11 +53,11 @@ class Equipment extends Component {
     }
 
     postToWorkout = (workout) => {
-        console.log("userProfileId:", this.state.userProfile.id)
+         console.log("userProfileId:", this.props.id )
         axios.put('/api/workout/post', {
             name: workout.name,
             description: workout.description,
-            userId: this.state.userProfile.id
+            userId: workout.user_id
         })
         .then((response) => {
             console.log(response.data)
@@ -103,8 +108,9 @@ class Equipment extends Component {
 const mapStateToProps = (state) => {
     return {
         name: state.name,
-        description: state.description
+        description: state.description,
+        user_id: state.id,
     }
 }
 
-export default connect(mapStateToProps, {addToWorkout})(Equipment);
+export default connect(mapStateToProps, {addToWorkout, getUserProfile})(Equipment);

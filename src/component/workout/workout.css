@@ -1,0 +1,21 @@
+.workoutpg-wrapper{
+display: flex;
+height: 100vh;
+width: 100vw;
+background-color: blueviolet;
+}
+
+.workoutpg-container{
+    display: flex;
+    margin-top: 5vh;
+    padding: 0.5%;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.w-current-workout{
+    width: 50vw;
+    padding: 2%;
+    height: auto;
+    overflow: scroll;
+}

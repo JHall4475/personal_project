@@ -73,7 +73,7 @@ deleteWorkoutItem = (id) => {
 
                 <div></div>
                 
-                <div>Quotes</div>
+                {/* <div>Quotes</div> */}
                 <br></br>
                 <div className="display-container">
                 
@@ -96,7 +96,7 @@ deleteWorkoutItem = (id) => {
             </div>
             
 
-            <div className="goals-container">Goals</div>
+            <div className="dash-goals-container">Goals</div>
             <div className="weight-container">Weight Entries
                 {this.state.weightEntries.map(entries => {
                     return(

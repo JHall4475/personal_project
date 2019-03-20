@@ -1,70 +1,73 @@
-import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
-import WorkoutDisplay from '../workout/WorkoutDisplay'
+import WorkoutDisplay from '../workout/WorkoutDisplay';
+import './workout.css'
 
-class  Workout extends Component{
+class Workout extends Component {
 
-        state= {
-            workoutHolder:[],
-        }
+    state = {
+        workoutHolder: [],
+    }
 
-        componentDidMount = () => {
-           
-             this.getWorkout()
-         }  
+    componentDidMount = () => {
 
-         getWorkout = () => {
-            axios.get('/api/workout/retrieve'
+        this.getWorkout()
+    }
+
+    getWorkout = () => {
+        axios.get('/api/workout/retrieve'
             // , {userId: this.state.userProfile.id}
-            
-            )
+
+        )
             .then(workouts => {
                 console.log("workout:", workouts)
-                this.setState({workoutHolder: workouts.data})
+                this.setState({ workoutHolder: workouts.data })
             })
-        }
+    }
 
-        deleteWorkoutItem = (id) => {
-            console.log(id)
-            axios.delete(`/api/workout/${id}`)
+    deleteWorkoutItem = (id) => {
+        console.log(id)
+        axios.delete(`/api/workout/${id}`)
             .then((response) => {
                 console.log(response.data)
             })
             .then(this.getWorkout())
-        }
+    }
 
 
-    render(){
-        return(
-        <div>
-            Workout
+    render() {
+        return (
+            <div className='workoutpg-wrapper'>
+                <div className='workoutpg-container'>
+                    Workout
         <br></br>
-        <Link className="component-link" to='/equipment'>
-        <p>Create Workout by Equipment</p>
-        </Link>
-        <Link className="component-link" to='/exercises'>
-        <p>Create Workout by Exercises</p>
-        </Link>
-        
-        {this.state.workoutHolder.map(items => {
-                return(
-                    <div key={items.id}>
-                        <WorkoutDisplay
-                        name={items.name}
-                        description={items.description}
-                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.id)}
-                        
-                        >
+                    <Link className="component-link" to='/equipment'>
+                        <p>Create Workout by Equipment</p>
+                    </Link>
+                    <Link className="component-link" to='/exercises'>
+                        <p>Create Workout by Exercises</p>
+                    </Link>
 
-                        </WorkoutDisplay>
+                    <div className='w-current-workout'>
+                            <h3>Current Workout</h3>
+                        {this.state.workoutHolder.map(items => {
+                            return (
+                                <div key={items.id}>
+                                    <WorkoutDisplay
+                                        name={items.name}
+                                        description={items.description}
+                                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.id)}
+                                    >
+                                    </WorkoutDisplay>
+                                </div>
+                            )
+                        })}
                     </div>
-                )
-            })}
-               
-        
-        
-        </div>
+
+
+                </div>
+            </div>
         )
     }
 }

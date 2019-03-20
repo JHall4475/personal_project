@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import './weightWizard.css'
 
 
 class WeightWizard extends Component {
@@ -67,7 +68,8 @@ class WeightWizard extends Component {
     
     render(){
         return (
-            <div>
+            <div className='ww-wrapper'>
+                <div className='ww-container'>
                 <br></br>
                 Add Weight Entry
                 <br></br>
@@ -103,6 +105,7 @@ class WeightWizard extends Component {
                 {/* <button onClick={this.goBack('../weight')}>Cancel</button> */}
                 <Link className="component-link" to='/weight'>
                 <p>Cancel</p></Link>
+            </div>
             </div>
         )
     }

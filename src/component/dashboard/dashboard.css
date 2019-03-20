@@ -21,11 +21,10 @@
 .display-container{
     display: flex;
     height: 100vh;
-    backface-visibility: hidden;
-    position: relative;
-    will-change: auto;
-    padding: 1%;
     background-color: rgba(52, 52, 52, 0.4);
+    float: inline-start;
+    margin-top: 5vh;
+    padding: 0.5%;
 }
 
 .workout-container{
@@ -37,9 +36,11 @@
     height: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
+    /* display: block;
+    float: top; */
 }
 
-.goals-container{
+.dash-goals-container{
     /* display: flex; */
     width:33%;
     padding: .05%;
