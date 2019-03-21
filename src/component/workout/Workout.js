@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import WorkoutDisplay from '../workout/WorkoutDisplay';
 import './workout.css'
+import Equipment from './Equipment';
 
 class Workout extends Component {
 
@@ -40,17 +41,17 @@ class Workout extends Component {
         return (
             <div className='workoutpg-wrapper'>
                 <div className='workoutpg-container'>
-                    Workout
-        <br></br>
-                    <Link className="component-link" to='/equipment'>
+                    {/* <div> Workout </div> */}
+                    <br></br>
+                    {/* <Link className="component-link" to='/equipment'>
                         <p>Create Workout by Equipment</p>
                     </Link>
                     <Link className="component-link" to='/exercises'>
                         <p>Create Workout by Exercises</p>
-                    </Link>
+                    </Link> */}
 
                     <div className='w-current-workout'>
-                            <h3>Current Workout</h3>
+                        <h3>Current Workout</h3>
                         {this.state.workoutHolder.map(items => {
                             return (
                                 <div key={items.id}>
@@ -64,7 +65,9 @@ class Workout extends Component {
                             )
                         })}
                     </div>
-
+                    <div>
+                        <Equipment></Equipment>
+                    </div>
 
                 </div>
             </div>

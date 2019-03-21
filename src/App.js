@@ -4,6 +4,8 @@ import Nav from '../src/component/nav/Nav';
 import route from '../src/route';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Header from './component/header/Header';
+import Footer from './component/footer/Footer'
 
 
 class App extends Component {
@@ -23,9 +25,12 @@ class App extends Component {
           draggable
           pauseOnHover={false}
         />
+        <Header></Header>
         <Nav></Nav>
-            {route}
-          </div>
+        <div>{route}</div>
+        <Footer></Footer>
+       
+      </div>
     );
   }
 }

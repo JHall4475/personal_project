@@ -9,13 +9,16 @@ background-color: blueviolet;
     display: flex;
     margin-top: 5vh;
     padding: 0.5%;
-    flex-direction: column;
+    flex-direction: row;
     width: 100vw;
+    height: 89vh;
+    /* overflow: scroll; */
 }
 
 .w-current-workout{
     width: 50vw;
-    padding: 2%;
+    /* padding: 2%; */
     height: auto;
     overflow: scroll;
+    border: solid white 2px;
 }

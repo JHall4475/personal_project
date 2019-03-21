@@ -1,0 +1,24 @@
+.header-container{
+    background-color: #152D44;
+    height: 6vh;
+}
+
+.title-container{
+    float: left;
+    margin-left: 10%;
+    margin-top: 2px;
+    
+    
+}
+
+.header-e{
+    text-shadow: 2px 3px 3px #292929;
+    font-weight: 300;
+    font-size: 275%;
+    text-align: baseline;
+    
+}
+.header-rest{
+    font-size: 200%;
+    
+}

@@ -70,7 +70,7 @@ class Equipment extends Component {
 
     render() {
         return (
-            <div >
+            <div className='eqp-wrapper'>
                 {/* <button onClick={() => this.getEquipmentList()}>Search by Equipment</button> */}
                 
             <div className="headerContainer">
@@ -86,19 +86,20 @@ class Equipment extends Component {
                     })}
                 </div>
 
+                    <div className='eqp-container-wrapper'>
                 {this.state.specificExercise.map((exercise, index) => {
                     return (
                         <div className="containerDiv" key={exercise.id}>
                             <div className="exerciseByEquipment">
                             
-                                <p>{exercise.name}</p>
+                                <h4>{exercise.name}</h4>
                                 <p>{exercise.description}</p>
-                              
                                 <button onClick={() => this.postToWorkout(this.state.specificExercise[index])}>Add to workout</button>
                             </div>
                         </div>
                     )
                 })}
+                </div>
             </div>
         )
     }

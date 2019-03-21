@@ -2,7 +2,8 @@
   text-align: center;
   background-color: #004E64;
   height: 100vh;
-  color: #d9e5d6
+  color: #d9e5d6;
+  overflow: hidden;
 }
 /* .App-header {
   background-color: #282c34;

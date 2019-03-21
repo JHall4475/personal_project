@@ -1,8 +1,8 @@
 .nav-wrapper {
-    background-color: #004E64;
+    background-color: #494949;
     display: flex;
     justify-content: flex-end;
-    height: 5vh;
+    height: 4vh;
     width:100vw;
     position: absolute;
     z-index: 10;

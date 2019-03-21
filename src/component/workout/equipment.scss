@@ -1,18 +1,41 @@
 /* textarea, select, input, button { outline: none; } */
 #element { margin:0; padding:0; font-size:100%; line-height:1; }
  
+.eqp-wrapper{
+    display: flex;
+    height: auto;
+    width: auto;
+    justify-content: center;
+    flex-direction: column;
+     overflow: scroll;
+    
+}
+.eqp-container-wrapper{
+    height:84vh;
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    overflow: scroll;
+}
 .headerContainer {
     display: flex;
     flex-flow: row;
+    flex-wrap: wrap;
     height: 5vh;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    background-color: #1B998B;
+    background-color: red;
+    margin: 1px;
+    margin-left: 5px;
+    padding: 3px;
+    // margin-top: 10vh;
 }
 
 .equipmentDiv {
-    display: flex;
+  display: flex;
   flex-flow: row;
   justify-content: space-around;
   
@@ -24,25 +47,31 @@
 }
 
 .exerciseByEquipment {
-    
-    height: fit-content;
+    height: 95%;
     width: 80vw;
     background-color: #1B998B;
-    border: 10px;
-    border-color: white;
+    padding: 5px;
+    margin: 1px;
+    overflow: scroll;
     
-}
-.containerDivHeader {
-    
-    /* align-items: baseline;
-    justify-content: flex-start */
 }
 
 .containerDiv {
-    height: 30vh;
+    height: 200px;
+    min-height: 200px;
+    margin: 5px;
+    padding: 5px;
+    width: 50vw;
+    border: solid white 2px;
     background-color: #004E64;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
    
 }
+// .containerDivHeader {
+    
+//     /* align-items: baseline;
+//     justify-content: flex-start */
+// }
