@@ -19,7 +19,7 @@ function Nav(props) {
             })
     }
 
-    if (props.location.pathname !== '/') {
+    if (props.location.pathname !== '/' && props.location.pathname !== '/register') {
         return (
             <div className="nav-wrapper">
                 <div className="nav-items">
@@ -29,7 +29,12 @@ function Nav(props) {
                         onClick={() => logoutUser()}>Logout</button>
 
                     <div>
-                        <img className="profile-pic" src="https://images.homedepot-static.com/productImages/e350ef76-f7ff-46ee-83d2-606aab23453c/svn/mea-nursery-rose-bushes-62014-64_1000.jpg" alt="profile_pic"></img>
+                        
+                        {/* <Link className="nav-link" to='/profile'>
+                        <p>Profile</p>
+                        </Link> */}
+                        {/* <img className="profile-pic" src="https://images.homedepot-static.com/productImages/e350ef76-f7ff-46ee-83d2-606aab23453c/svn/mea-nursery-rose-bushes-62014-64_1000.jpg" alt="profile_pic"></img> */}
+                        
                     </div>
                     <Link className="nav-link" to='/workout' >
                         <p>Workout</p>

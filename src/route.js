@@ -11,6 +11,8 @@ import Exercises from './component/workout/Exercises'
 import Dashboard from './component/dashboard/Dashboard';
 import CaloricNeeds from './component/goals/CaloricNeeds';
 import IdealWeight from './component/goals/IdealWeight';
+import Register from './register/Register';
+import Profile from './component/profile/Profile';
 
 export default (
     <Switch>
@@ -25,5 +27,7 @@ export default (
     <Route path="/dashboard" component={Dashboard}></Route>
     <Route path="/caloricNeeds" component={CaloricNeeds}></Route> 
     <Route path="/idealWeight" component={IdealWeight}></Route>  
+    <Route path="/register" component={Register}></Route>
+    <Route path="/profile" component={Profile}></Route>
     </Switch>
 )

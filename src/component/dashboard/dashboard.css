@@ -23,7 +23,6 @@
     background-color: rgba(52, 52, 52, 0.4);
     float: inline-start;
     margin-top: 4vh;
-    /* margin-bottom: 20vh; */
     padding: 0.5%;
     overflow: hidden;
     
@@ -31,21 +30,22 @@
 
 .workout-container{
     width: 33%;
+    min-width: 33%;
     padding: .05%;
     overflow: scroll ;
     height: 83vh;
 }
 
 .dash-goals-container{
-    /* display: flex; */
     width:33%;
+    min-width: 33%;
     padding: .05%;
     justify-content: center;
 }
 
 .weight-container{
-    /* display: flex; */
     width: 33%;
+    min-width: 33%;
     padding: .05%;
     flex-flow: column;
 }

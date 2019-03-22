@@ -82,6 +82,16 @@ module.exports = {
             return res.send(err)
         })
     },
+    getLabels: (req, res) => {
+        const db = req.app.get('db')
+        db.get_labels()
+        .then(result => {
+            return res.status(200).send(result)
+        })
+        .catch(err => {
+            return res.send(err)
+        })
+    },
     retrieveWeight: (req, res) => {
         const db = req.app.get('db')
         db.get_weight_entries()

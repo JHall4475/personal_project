@@ -1,16 +1,19 @@
 .weightpg-wrapper{
 display: flex;
-height: 100vh;
+height: 84vh;
 width: 100vw;
-background-color: darkgreen;
+background-color: white;
 align-items: center;
 justify-content: center;
+overflow: scroll;
+margin-top: 4vh;
+
 }
 
 .weightpg-container{
     display: flex;
     height: 100vh;
-    margin-top: 10vh;
+    margin-top: 12vh;
     flex-direction: column;
     padding: 2%;
 }

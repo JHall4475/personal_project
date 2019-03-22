@@ -4,12 +4,18 @@
     bottom:0;
     right:0;
     height: 6vh;
+    display:inline-block;
+
 }
 
 .ftr-container{
     background-color: #6B6B6B;
-    /* height: 100vh; */
-    /* width: 100vw; */
-    /* z-index: 100; */
-    /* margin-bottom: 14%; */
+    text-align: center;
+}
+
+.footer-img{
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    margin:5px;
 }

@@ -51,7 +51,7 @@ class Workout extends Component {
                     </Link> */}
 
                     <div className='w-current-workout'>
-                        <h3>Current Workout</h3>
+                        <h3 ><u>Current Workout</u></h3>
                         {this.state.workoutHolder.map(items => {
                             return (
                                 <div key={items.id}>
@@ -65,7 +65,8 @@ class Workout extends Component {
                             )
                         })}
                     </div>
-                    <div>
+                    <div className='w-add-to'>
+                        <h3><u>Add to Workout</u></h3>
                         <Equipment></Equipment>
                     </div>
 

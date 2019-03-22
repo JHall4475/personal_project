@@ -1,0 +1,8 @@
+.rgstr-main{
+    height: 88vh;
+}
+
+.rgstr-body-wrapper{
+    display:flex;
+    flex-direction: column;
+}

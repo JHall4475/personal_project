@@ -6,9 +6,47 @@
     background-color: darkblue;
     
 }
+.goals-header{
+    background-color: black;
+}
 
 .goals-container{
+    height: 84vh;
+    width: 90vw;
+    background-color: darkmagenta;
     display: flex;
-    position: relative;
+    flex-direction: column;
     margin-top: 5vh;
+    align-items: center;
+}
+.goals-quote{
+    position: relative;
+    font-family: 'Sanchez', serif;
+    font-size: auto;
+    font-style: italic;
+}
+.goals-boxes{
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+}
+.goals-basal{
+    height: 20vh;
+    width: 50vw;
+    border: solid black 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.goals-caloric{
+    height: 20vh;
+    width: 50vw;
+    border: solid black 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }

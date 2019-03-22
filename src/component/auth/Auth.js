@@ -34,14 +34,16 @@ class Auth extends Component {
     }
 
     registerNewUser(){
-        axios.post(`/api/register`, {
-            username: this.state.username,
-            password: this.state.password
-        })
-        .then((response) => {
-            console.log(response.data)
-            this.props.history.push('/dashboard')
-        })
+        // axios.post(`/api/register`, {
+        //     username: this.state.username,
+        //     password: this.state.password
+        // })
+        // .then((response) => {
+        //     console.log(response.data)
+        //     this.props.history.push('/dashboard')
+        // })
+
+        this.props.history.push('/register')
     }
 
 
