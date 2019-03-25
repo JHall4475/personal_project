@@ -15,13 +15,7 @@ app.use(session({
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,
 }))
-// app.use((req, res, next) => {
-//     // console.log("Session");
-//     // console.log(req.session)
-//     // console.log("BODY")
-//     // console.log(req.body)
-//      next();
-// })
+
 
 massive(process.env.DATABASE_STRING)
 .then(db => {
@@ -54,7 +48,7 @@ app.delete('/api/weight/:id', controller.deleteWeightEntry)
 app.get('/health', (req, res) => {
     return res.send('ok')
 })
-app.get('/api/weight/retrieve', controller.retrieveWeight)
+app.get('/api/weightretrieve', controller.retrieveWeight)
 app.post('/api/basal/post', controller.addBasalEntry)
 app.get('/api/chart/labels', controller.getLabels)
 

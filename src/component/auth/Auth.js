@@ -24,7 +24,7 @@ class Auth extends Component {
             password: this.state.password
         })
         .then((response) => {
-            console.log(response)
+            console.log("this is everything from login:", response)
             this.props.history.push('/dashboard')
             toast.success(`Welcome ${this.state.username}`)
         })

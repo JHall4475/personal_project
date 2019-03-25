@@ -19,17 +19,15 @@ module.exports = {
     },
     loginUser: (req, res) => {
         const db = req.app.get('db');
-        console.log(req.body)
         db.get_user([req.body.username])
         .then( (user => {
-            console.log('user', user)
             bcrypt.compare(req.body.password, user[0].password, (err, isCorrectPassword) => {
                 if (!isCorrectPassword) {
                     console.log('error')
                     return res.status(500).send("error")
                 }
                 if(isCorrectPassword){
-                    console.log('correct')
+                    console.log('passwords match')
                     req.session.user = user[0]
                     res.send('Login Successful')
                 }
@@ -52,13 +50,11 @@ module.exports = {
     weightPost: (req, res) => {
         const db = req.app.get('db')
         db.add_new_weight([req.body.id, req.body.date, req.body.weight])
-        console.log(req.body)
         res.status(200).send("Successfully added weight entry")
     },
     addToWorkout: (req, res) => {
         const db = req.app.get('db')
         db.add_to_workout([req.body.name, req.body.description, req.body.userId])
-        console.log(req.body)
         res.status(200).send("Successfully added to Workout")
        
     },
@@ -69,7 +65,7 @@ module.exports = {
             return res.status(200).send(result)
         })
         .catch(err => {
-            return res.send(err)
+            return res.status(500).send(err.response)
         })
     },
     getLabels: (req, res) => {
@@ -89,7 +85,7 @@ module.exports = {
             return res.status(200).send(result)
         })
         .catch(err => {
-            return res.send(err)
+            return res.status(500).send(err.response)
         })
     },
     deleteWorkoutItem: (req, res) => {

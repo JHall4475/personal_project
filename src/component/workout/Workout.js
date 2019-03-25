@@ -60,7 +60,8 @@ class Workout extends Component {
                         <h3 ><u>Current Workout</u></h3>
                         {this.state.workoutHolder.map(items => {
                             return (
-                                <div key={items.id}>
+                                <div key={items.name}>
+                                {console.log("workout items:", items)}
                                     <WorkoutDisplay
                                         name={items.name}
                                         description={items.description}

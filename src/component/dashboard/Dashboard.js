@@ -3,7 +3,6 @@ import './dashboard.css'
 import axios from 'axios';
 import WorkoutDisplay from '../workout/WorkoutDisplay';
 import WeightDisplay from '../weight/WeightDisplay';
-import Weight from '../weight/Weight';
 import {Line} from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
 
@@ -40,15 +39,16 @@ getWorkout = () => {
     axios.get('/api/workout/retrieve', {userId: this.state.userProfile.id})
     .then(workouts => {
         console.log("Dash workout:", workouts)
+        console.log("dash workout id", this.state.userProfile.id)
         this.setState({workoutHolder: workouts.data})
     })
 }
 getWeight = () => {
-    axios.get('/api/weight/retrieve', {userId: this.state.userProfile.id})
+    axios.get('/api/weightretrieve', {userId: this.state.userProfile.id})
     .then(entries => {
-        console.log("weight:", entries)
-         this.setState({weightEntries: entries.data},
-            () => {this.getLabels();})
+        console.log("dash weight:", entries)
+        console.log('dash weight id:', this.state.userProfile.id)
+         this.setState({weightEntries: entries.data})
     })
 }
 getLabels= () => {
@@ -70,6 +70,13 @@ deleteWorkoutItem = (id) => {
         console.log(response.data)
     })
     .then(this.getWorkout())
+}
+deleteWeightEntry = (id) => {
+    console.log(id)
+    axios.delete(`/api/weight/${id}`)
+        .then((response) => {
+            console.log(response.data)
+        })
 }
 
 
@@ -136,7 +143,7 @@ deleteWorkoutItem = (id) => {
                <h3>Current Workout</h3>
                     {this.state.workoutHolder.map(items => {
                     return(
-                     <div key={items.id}>
+                     <div key={items.name}>
                         <WorkoutDisplay
                         name={items.name}
                         description={items.description}
@@ -169,7 +176,7 @@ deleteWorkoutItem = (id) => {
                         
                         date={entries.date}
                         weight={entries.weight}
-                        
+                        deleteWeightEntry={() => this.deleteWeightEntry(entries.entry_number)}
                         ></WeightDisplay>
                         
                         </div>
