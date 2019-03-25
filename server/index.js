@@ -17,10 +17,12 @@ app.use(session({
 }))
 
 
+
 massive(process.env.DATABASE_STRING)
 .then(db => {
     app.set('db', db)
     console.log('Database is Connected Boss')
+    
 })
 .catch(err => {
     console.log('Database connection error', err)
@@ -34,12 +36,13 @@ let requireAuth = (req, res, next) => {
     }
 }
 
+
 app.post('/api/register', controller.register)
 app.post('/api/login', controller.loginUser)
 app.post('/api/logoutUser', controller.logoutUser)
 app.post('/api/weight/post', controller.weightPost)
 app.put('/api/workout/post', controller.addToWorkout)
-app.get('/api/workout/retrieve', controller.retrieveWorkout)
+app.get('/api/workout/retrieve/:id', controller.retrieveWorkout)
 app.get('/api/user', (req, res) => {
     res.send(req.session.user)
 })
@@ -48,7 +51,7 @@ app.delete('/api/weight/:id', controller.deleteWeightEntry)
 app.get('/health', (req, res) => {
     return res.send('ok')
 })
-app.get('/api/weightretrieve', controller.retrieveWeight)
+app.get('/api/weightretrieve/:id', controller.retrieveWeight)
 app.post('/api/basal/post', controller.addBasalEntry)
 app.get('/api/chart/labels', controller.getLabels)
 

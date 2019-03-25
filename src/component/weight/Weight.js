@@ -19,7 +19,7 @@ class Weight extends Component {
 
     componentDidMount = () => {
         this.getUserProfile()
-        this.getWeightEntries()
+       // this.getWeightEntries()
     }
     getUserProfile = () => {
         axios.get('/api/user')
@@ -28,19 +28,28 @@ class Weight extends Component {
             this.setState({userProfile: user.data})
            
         })
+        .then(this.getWeightEntries)
     }
   
 
     getWeightEntries = () => {
-        axios.get('/api/weight/retrieve', {userId: this.state.userProfile.id} )
-            .then(entries => {
-                console.log('weightpage entries:', entries)
-                this.setState({ weightEntries: entries.data
-                }, () => {this.getLabels();})
-            })
+        // axios.get('/api/weightretrieve', {userId: this.state.userProfile.id} )
+        //     .then(entries => {
+        //         console.log('weightpage entries:', entries)
+        //         this.setState({ weightEntries: entries.data
+        //         }, () => {this.getLabels();})
+        //     })
+        const id = this.state.userProfile.id
+    axios.get(`/api/weightretrieve/${id}`)
+    .then(entries => {
+         this.setState({weightEntries: entries.data})
+    })
+    .then(this.getLabels)
             
             
     }
+
+    
    
    
     getLabels= () => {

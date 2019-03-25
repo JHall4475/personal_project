@@ -1,5 +1,8 @@
 const bcrypt = require('bcrypt-nodejs');
 
+
+
+
 module.exports = {
 
     register: (req, res) => {
@@ -60,8 +63,9 @@ module.exports = {
     },
     retrieveWorkout: (req, res) => {
         const db = req.app.get('db')
-        db.get_workout([req.body.userId])
+        db.get_workout([req.params.id])
         .then(result => {
+            console.log("this is the params id:",req.params.id)
             return res.status(200).send(result)
         })
         .catch(err => {
@@ -80,7 +84,7 @@ module.exports = {
     },
     retrieveWeight: (req, res) => {
         const db = req.app.get('db')
-        db.get_weight_entries([req.body.userId])
+        db.get_weight_entries([req.params.id])
         .then(result => {
             return res.status(200).send(result)
         })

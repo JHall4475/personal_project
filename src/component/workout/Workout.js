@@ -25,7 +25,6 @@ class Workout extends Component {
 
     getWorkout = () => {
         axios.get('/api/workout/retrieve', {userId: this.state.userProfile.id}
-
         )
             .then(workouts => {
                 console.log("workout:", workouts)

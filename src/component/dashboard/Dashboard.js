@@ -21,8 +21,8 @@ class Dashboard extends Component {
 
 componentDidMount = () => {
    this.getUserProfile()
-   this.getWeight()
-   this.getWorkout()
+  //this.getWeight()
+//   this.getWorkout()
     
     
 }
@@ -30,13 +30,19 @@ componentDidMount = () => {
 getUserProfile = () => {
     axios.get('/api/user')
     .then(user => {
-        console.log('dash user:', user)
+        console.log('dash user:', user.data)
         this.setState({userProfile: user.data })}
-    )}
+    )
+    .then(this.getWorkout)
+    .then(this.getWeight)
+   
+}
 
 
 getWorkout = () => {
-    axios.get('/api/workout/retrieve', {userId: this.state.userProfile.id})
+    const id = this.state.userProfile.id
+    axios.get(`/api/workout/retrieve/${id}`
+    )
     .then(workouts => {
         console.log("Dash workout:", workouts)
         console.log("dash workout id", this.state.userProfile.id)
@@ -44,12 +50,12 @@ getWorkout = () => {
     })
 }
 getWeight = () => {
-    axios.get('/api/weightretrieve', {userId: this.state.userProfile.id})
+    const id = this.state.userProfile.id
+    axios.get(`/api/weightretrieve/${id}`)
     .then(entries => {
-        console.log("dash weight:", entries)
-        console.log('dash weight id:', this.state.userProfile.id)
          this.setState({weightEntries: entries.data})
     })
+    .then(this.getLabels)
 }
 getLabels= () => {
     const  finalArray = this.state.weightEntries.map( function(label){
@@ -143,11 +149,11 @@ deleteWeightEntry = (id) => {
                <h3>Current Workout</h3>
                     {this.state.workoutHolder.map(items => {
                     return(
-                     <div key={items.name}>
+                     <div key={items.workout_id}>
                         <WorkoutDisplay
                         name={items.name}
                         description={items.description}
-                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.id)}
+                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.workout_id)}
                         >
                         </WorkoutDisplay>
                     </div>
