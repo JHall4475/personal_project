@@ -39,6 +39,8 @@ class Weight extends Component {
         //         this.setState({ weightEntries: entries.data
         //         }, () => {this.getLabels();})
         //     })
+
+
         const id = this.state.userProfile.id
     axios.get(`/api/weightretrieve/${id}`)
     .then(entries => {

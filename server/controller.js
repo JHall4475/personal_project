@@ -91,7 +91,19 @@ module.exports = {
         .catch(err => {
             return res.status(500).send(err.response)
         })
-    },
+    }
+    // retrieveWeight: (req, res) => {
+    //     const db = req.app.get('db')
+    //     db.get_weight_entries([req.body.id])
+    //     .then(result => {
+    //         return res.status(200).send(result)
+    //     })
+    //     .catch(err => {
+    //         return res.status(500).send(err.response)
+    //     })
+    // }
+    
+    ,
     deleteWorkoutItem: (req, res) => {
         const db = req.app.get('db')
         //console.log(req.params.id)
