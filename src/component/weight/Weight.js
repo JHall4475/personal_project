@@ -12,20 +12,29 @@ class Weight extends Component {
         weightEntries: [],
         date:[],
         weight:[],
+        userProfile: [],
+
       
     }
 
     componentDidMount = () => {
+        this.getUserProfile()
         this.getWeightEntries()
-   // this.getLabels()
     }
-
+    getUserProfile = () => {
+        axios.get('/api/user')
+        .then(user => {
+            // console.log("userData pulled in Dashboard.js:", user.data)
+            this.setState({userProfile: user.data})
+           
+        })
+    }
   
 
     getWeightEntries = () => {
-        axios.get('/api/weight/entries')
+        axios.get('/api/weight/retrieve', {userId: this.state.userProfile.id} )
             .then(entries => {
-                console.log('weight entries:', entries)
+                console.log('weightpage entries:', entries)
                 this.setState({ weightEntries: entries.data
                 }, () => {this.getLabels();})
             })

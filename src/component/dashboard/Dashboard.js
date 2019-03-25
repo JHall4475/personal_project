@@ -22,33 +22,29 @@ class Dashboard extends Component {
 
 componentDidMount = () => {
    this.getUserProfile()
-    this.getWorkout()
-    this.getWeight()
+   this.getWeight()
+   this.getWorkout()
+    
     
 }
 
 getUserProfile = () => {
     axios.get('/api/user')
     .then(user => {
-        console.log("userData pulled in Dashboard.js:", user.data)
-        this.setState({userProfile: user.data})
-       
-    })
-}
+        console.log('dash user:', user)
+        this.setState({userProfile: user.data })}
+    )}
 
 
 getWorkout = () => {
-    axios.get('/api/workout/retrieve'
-    // , {userId: this.state.userProfile.id}
-    
-    )
+    axios.get('/api/workout/retrieve', {userId: this.state.userProfile.id})
     .then(workouts => {
-        console.log("workout:", workouts)
+        console.log("Dash workout:", workouts)
         this.setState({workoutHolder: workouts.data})
     })
 }
 getWeight = () => {
-    axios.get('/api/weight/retrieve')
+    axios.get('/api/weight/retrieve', {userId: this.state.userProfile.id})
     .then(entries => {
         console.log("weight:", entries)
          this.setState({weightEntries: entries.data},
@@ -79,6 +75,28 @@ deleteWorkoutItem = (id) => {
 
     render() {
         const options = {
+            gridLines:{
+                color:"rgb(217, 229, 214)",
+            },
+            scales: {
+                xAxes: [{ 
+                    gridLines: {
+                        display: true,
+                    },
+                    ticks: {
+                      fontColor: "rgb(217, 229, 214)", // this here
+                    },
+                }],
+                yAxes: [{
+                    display: true,
+                    gridLines: {
+                        display: true,
+                    },
+                    ticks: {
+                        fontColor: "rgb(217, 229, 214)", // this here
+                      },
+                }],
+            },
             annotation: {
                 annotations: [{
                     drawTime: 'afterDatasetsDraw',
@@ -89,9 +107,7 @@ deleteWorkoutItem = (id) => {
                     type: 'line',
                     value: 10,
                     scaleID: 'x-axis-0',
-                    ticks: {
-                        fontColor: "rgb(217, 229, 214)", // this here
-                      },
+                    
               }]
            },
            maintainAspectRation: false
@@ -117,7 +133,7 @@ deleteWorkoutItem = (id) => {
                 <div className="display-container">
                 
                 <div className="workout-container">
-               Current Workout
+               <h3>Current Workout</h3>
                     {this.state.workoutHolder.map(items => {
                     return(
                      <div key={items.id}>
@@ -133,12 +149,13 @@ deleteWorkoutItem = (id) => {
             </div>
             
 
-            <div className="dash-goals-container">Goals
+            <div className="dash-goals-container"><h3>Goals</h3>
             <h3 className='goals-quote'>"A journey of a thousand miles begins with a single step."
 – Lao Tzu</h3>
+
             
             </div>
-            <div className="weight-container"><div>Weight Entries</div>
+            <div className="weight-container"><div><h3>Weight Entries</h3></div>
             <Line
                                 data={data}
                                 width={500}

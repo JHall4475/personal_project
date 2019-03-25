@@ -9,16 +9,22 @@ class Workout extends Component {
 
     state = {
         workoutHolder: [],
+        userProfile:[],
     }
 
     componentDidMount = () => {
-
+        this.getUserProfile()
         this.getWorkout()
+    }
+    getUserProfile = () => {
+        axios.get('/api/user')
+        .then(user => {
+            this.setState({userProfile: user.data})
+        })
     }
 
     getWorkout = () => {
-        axios.get('/api/workout/retrieve'
-            // , {userId: this.state.userProfile.id}
+        axios.get('/api/workout/retrieve', {userId: this.state.userProfile.id}
 
         )
             .then(workouts => {

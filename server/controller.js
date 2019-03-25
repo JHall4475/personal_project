@@ -62,19 +62,9 @@ module.exports = {
         res.status(200).send("Successfully added to Workout")
        
     },
-    weightEntries: (req, res) => {
-        const db = req.app.get('db')
-        db.get_weight_entries()
-        .then(result => {
-            return res.status(200).send(result)
-        })
-        .catch(err => {
-            return res.send(err)
-        })
-    },
     retrieveWorkout: (req, res) => {
         const db = req.app.get('db')
-        db.get_workout()
+        db.get_workout([req.body.userId])
         .then(result => {
             return res.status(200).send(result)
         })
@@ -94,7 +84,7 @@ module.exports = {
     },
     retrieveWeight: (req, res) => {
         const db = req.app.get('db')
-        db.get_weight_entries()
+        db.get_weight_entries([req.body.userId])
         .then(result => {
             return res.status(200).send(result)
         })

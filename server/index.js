@@ -15,13 +15,13 @@ app.use(session({
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET,
 }))
-app.use((req, res, next) => {
-    console.log("Session");
-    console.log(req.session)
-    console.log("BODY")
-    console.log(req.body)
-     next();
-})
+// app.use((req, res, next) => {
+//     // console.log("Session");
+//     // console.log(req.session)
+//     // console.log("BODY")
+//     // console.log(req.body)
+//      next();
+// })
 
 massive(process.env.DATABASE_STRING)
 .then(db => {
@@ -51,7 +51,6 @@ app.get('/api/user', (req, res) => {
 })
 app.delete('/api/workout/:id', controller.deleteWorkoutItem)
 app.delete('/api/weight/:id', controller.deleteWeightEntry)
-app.get('/api/weight/entries', controller.weightEntries)
 app.get('/health', (req, res) => {
     return res.send('ok')
 })
