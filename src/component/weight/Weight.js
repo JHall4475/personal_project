@@ -58,10 +58,11 @@ class Weight extends Component {
       const  finalArray = this.state.weightEntries.map( function(label){
             return label.date
         })
+        const finalArray2= finalArray.reverse()
         const finalWeight = this.state.weightEntries.map(function(yaxis){
             return yaxis.weight
         })
-        this.setState({date: finalArray,
+        this.setState({date: finalArray2,
         weight: finalWeight
         })
     }

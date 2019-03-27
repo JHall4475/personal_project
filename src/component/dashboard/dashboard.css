@@ -47,5 +47,7 @@
     width: 33%;
     min-width: 33%;
     padding: .05%;
+    height: 83vh;
     flex-flow: column;
+    overflow: scroll;
 }

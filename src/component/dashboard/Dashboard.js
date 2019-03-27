@@ -88,6 +88,11 @@ deleteWeightEntry = (id) => {
 
     render() {
         const options = {
+           legend:{
+               labels:{
+                   fontColor:"rgb(217, 229, 214)"
+               }
+           },
             gridLines:{
                 color:"rgb(217, 229, 214)",
             },
@@ -129,7 +134,6 @@ deleteWeightEntry = (id) => {
             labels: this.state.date,
             datasets:[{
             label: "Weight Entry Log",
-            color: 'rgb(217, 229, 214)',
             backgroundColor: 'rgb(95, 158, 160)',
             borderColor: '#494949',
             data: this.state.weight,
