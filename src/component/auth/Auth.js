@@ -2,13 +2,21 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import './auth.css';
-
+import {addLoginUserId} from '../../ducks/actions';
+import {connect} from 'react-redux';
+import  store  from '../../ducks/store'
 
 class Auth extends Component {
 
     state={
         username:'',
         password:'',
+    }
+
+    componentDidMount=() => {
+        store.subscribe(() => {
+            console.log("store changed", store.getState())
+        })
     }
 
     onInputChangeUsername= (e) => {
@@ -24,9 +32,10 @@ class Auth extends Component {
             password: this.state.password
         })
         .then((response) => {
-            console.log("this is everything from login:", response)
+            store.dispatch({type: "GET_USER_PROFILE", payload: response.data})
             this.props.history.push('/dashboard')
             toast.success(`Welcome ${this.state.username}`)
+            console.log("afterlogin userprofile", this.props.userprofile)
         })
         .catch(() => {
             toast.error(`Invalid Username or Password`);
@@ -34,15 +43,6 @@ class Auth extends Component {
     }
 
     registerNewUser(){
-        // axios.post(`/api/register`, {
-        //     username: this.state.username,
-        //     password: this.state.password
-        // })
-        // .then((response) => {
-        //     console.log(response.data)
-        //     this.props.history.push('/dashboard')
-        // })
-
         this.props.history.push('/register')
     }
 
@@ -78,4 +78,13 @@ class Auth extends Component {
         )
     }
 }
-export default Auth;
+const mapStateToProps = (state) => {
+    return{
+        userprofile: state.userprofile,
+        username: state.userprofile.username,
+        id: state.userprofile.id,
+    }
+}
+
+//export default Auth;
+export default connect(mapStateToProps)(Auth);

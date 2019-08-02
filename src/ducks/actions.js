@@ -18,3 +18,13 @@ export const getUserProfile = () => {
      })
  }
 }
+export const addLoginUserId = (loginUserId) => {
+    return dispatch => {
+        dispatch({ 
+        type:"ADD_USER_ID",
+        payload: loginUserId
+    })
+       
+        
+    }
+}

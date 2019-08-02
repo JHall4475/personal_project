@@ -5,6 +5,8 @@ import WorkoutDisplay from '../workout/WorkoutDisplay';
 import WeightDisplay from '../weight/WeightDisplay';
 import {Line} from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
+import {connect} from 'react-redux'; 
+import  store  from '../../ducks/store'
 
 
 
@@ -12,61 +14,51 @@ class Dashboard extends Component {
 
     state = {
         workoutHolder: [],
-        userProfile: [],
-        weightEntries:[],
-        date:[],
-        weight:[],
-
     }
 
 componentDidMount = () => {
-   this.getUserProfile()
-  //this.getWeight()
-//   this.getWorkout()
-    
-    
+  this.getWeight()
+ this.getWorkout()
 }
-
-getUserProfile = () => {
-    axios.get('/api/user')
-    .then(user => {
-        console.log('dash user:', user.data)
-        this.setState({userProfile: user.data })}
-    )
-    .then(this.getWorkout)
-    .then(this.getWeight)
-   
-}
-
 
 getWorkout = () => {
-    const id = this.state.userProfile.id
+   const id = this.props.userid
     axios.get(`/api/workout/retrieve/${id}`
     )
     .then(workouts => {
         console.log("Dash workout:", workouts)
-        console.log("dash workout id", this.state.userProfile.id)
-        this.setState({workoutHolder: workouts.data})
+        store.dispatch({type:"GET_USER_WORKOUT", payload: workouts.data})
+        // this.setState({workoutHolder: workouts.data})
     })
 }
 getWeight = () => {
-    const id = this.state.userProfile.id
+   const id = this.props.userid
     axios.get(`/api/weightretrieve/${id}`)
     .then(entries => {
-         this.setState({weightEntries: entries.data})
+        console.log("Dash weights", entries)
+        store.dispatch({type:"GET_USER_WEIGHT", payload: entries.data})
+        console.log("weight entries redux", this.props.weightEntries)
+        //  this.setState({weightEntries: entries.data})
     })
     .then(this.getLabels)
 }
 getLabels= () => {
-    const  finalArray = this.state.weightEntries.map( function(label){
+    const  finalDate = this.props.weightEntries.map( function(label){
           return label.date
       })
-      const finalWeight = this.state.weightEntries.map(function(yaxis){
+      const finalWeight = this.props.weightEntries.map(function(yaxis){
           return yaxis.weight
       })
-      this.setState({date: finalArray,
-      weight: finalWeight
-      })
+      const labels ={
+          date: finalDate,
+          weight: finalWeight
+      }
+      store.dispatch({type:"GRAPH_LABELS", payload: labels})
+      console.log("labels date:", this.props.date, "labels weight:", this.props.weight)
+    //   this.setState({
+    //     date: finalDate,
+    //     weight: finalWeight
+    //   })
   }
 
 deleteWorkoutItem = (id) => {
@@ -128,15 +120,15 @@ deleteWeightEntry = (id) => {
                     
               }]
            },
-           maintainAspectRation: false
+           maintainAspectRation: true
         }
-        const  data={   
-            labels: this.state.date,
+        const  data={  
+            labels: this.props.date,
             datasets:[{
             label: "Weight Entry Log",
             backgroundColor: 'rgb(95, 158, 160)',
             borderColor: '#494949',
-            data: this.state.weight,
+            data: this.props.weight,
             zeroLineColor: 'rgb(217, 229, 214)',
             }]
         }
@@ -151,7 +143,7 @@ deleteWeightEntry = (id) => {
                 
                 <div className="workout-container">
                <h3>Current Workout</h3>
-                    {this.state.workoutHolder.map(items => {
+                    {this.props.workoutHolder.map(items => {
                     return(
                      <div key={items.workout_id}>
                         <WorkoutDisplay
@@ -179,7 +171,7 @@ deleteWeightEntry = (id) => {
                                 height={500}
                                 options={options}
                                 />
-                {this.state.weightEntries.map(entries => {
+                {this.props.weightEntries.map(entries => {
                     return(
                         <div key={entries.entry_number}> 
                         <WeightDisplay
@@ -201,4 +193,16 @@ deleteWeightEntry = (id) => {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+    return {
+        userprofile: state.userProfile,
+        username: state.userprofile.username,
+        userid: state.userprofile.id,
+        weightEntries: state.weightEntries,
+        workoutHolder: state.workoutHolder,
+        date: state.date,
+        weight: state.weight
+    }
+}
+
+export default connect(mapStateToProps) (Dashboard);

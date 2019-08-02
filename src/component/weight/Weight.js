@@ -3,71 +3,11 @@ import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import WeightDisplay from '../weight/WeightDisplay';
 import './weight.css';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
+import { connect } from 'react-redux';
 
 class Weight extends Component {
-    
-    state = {
-        weightEntries: [],
-        date:[],
-        weight:[],
-        userProfile: [],
-
-      
-    }
-
-    componentDidMount = () => {
-        this.getUserProfile()
-       // this.getWeightEntries()
-    }
-    getUserProfile = () => {
-        axios.get('/api/user')
-        .then(user => {
-            // console.log("userData pulled in Dashboard.js:", user.data)
-            this.setState({userProfile: user.data})
-           
-        })
-        .then(this.getWeightEntries)
-    }
-  
-
-    getWeightEntries = () => {
-        // axios.get('/api/weightretrieve', {userId: this.state.userProfile.id} )
-        //     .then(entries => {
-        //         console.log('weightpage entries:', entries)
-        //         this.setState({ weightEntries: entries.data
-        //         }, () => {this.getLabels();})
-        //     })
-
-
-        const id = this.state.userProfile.id
-    axios.get(`/api/weightretrieve/${id}`)
-    .then(entries => {
-         this.setState({weightEntries: entries.data})
-    })
-    .then(this.getLabels)
-            
-            
-    }
-
-    
-   
-   
-    getLabels= () => {
-      const  finalArray = this.state.weightEntries.map( function(label){
-            return label.date
-        })
-        const finalArray2= finalArray.reverse()
-        const finalWeight = this.state.weightEntries.map(function(yaxis){
-            return yaxis.weight
-        })
-        this.setState({date: finalArray2,
-        weight: finalWeight
-        })
-    }
-    
-   
 
 
     deleteWeightEntry = (id) => {
@@ -77,10 +17,6 @@ class Weight extends Component {
                 console.log(response.data)
             })
     }
-onClickGraph=()=>{
-    this.getLabels()
-    
-}
 
     render() {
         const options = {
@@ -94,46 +30,49 @@ onClickGraph=()=>{
                     type: 'line',
                     value: 10,
                     scaleID: 'x-axis-0',
-              }]
-           },
-           maintainAspectRation: false
+                }]
+            },
+            maintainAspectRation: false
         }
-        const  data={   
-            labels: this.state.date,
-            datasets:[{
-            label: "Weight Entry Log",
-            backgroundColor: 'rgb(95, 158, 160)',
-            borderColor: '#494949',
-            data: this.state.weight
+        const data = {
+            labels: this.props.date,
+            datasets: [{
+                label: "Weight Entry Log",
+                backgroundColor: 'rgb(95, 158, 160)',
+                borderColor: '#494949',
+                data: this.props.weight
             }]
         }
         return (
             <div className='weightpg-wrapper'>
                 <div className='weightpg-container'>Current Weight Log
         <br></br>
-        <Line
-                                data={data}
-                                width={500}
-                                height={500}
-                                options={options}
-                                />
-                    {this.state.weightEntries.map(entries => {
+                    <Line
+                        data={data}
+                        width={500}
+                        height={500}
+                        options={options}
+                    />
+                    {this.props.weightEntries.map(entries => {
                         return (
                             <div key={entries.id + entries.date}>
-                                <WeightDisplay
-                                    date={entries.date}
-                                    weight={entries.weight}
-                                    deleteWeightEntry={() => this.deleteWeightEntry(entries.entry_number)}
-                                ></WeightDisplay>
+                                <div className="weight-display-kernel">
+                                    <WeightDisplay
+                                        date={entries.date}
+                                        weight={entries.weight}
+                                        deleteWeightEntry={() => this.deleteWeightEntry(entries.entry_number)}
+                                    ></WeightDisplay>
+                                </div>
+
                             </div>
                         )
                     })}
                     <Link className="component-link" to='/wizard'>
                         <p>Add Weight Entry</p>
                     </Link>
-                   
-                                 {/* <button onClick={this.onClickGraph}>Show Graph</button>    */}
-                               
+
+                    {/* <button onClick={this.onClickGraph}>Show Graph</button>    */}
+
 
                 </div>
             </div>
@@ -142,4 +81,18 @@ onClickGraph=()=>{
     }
 }
 
-export default withRouter(Weight);
+const mapStateToProps = (state) => {
+    return {
+        userprofile: state.userProfile,
+        userid: state.userprofile.id,
+        weightEntries: state.weightEntries,
+        date: state.date,
+        weight: state.weight
+    }
+}
+
+export default connect(mapStateToProps)(Weight);
+
+
+
+//export default withRouter(Weight);

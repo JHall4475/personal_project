@@ -1,8 +1,5 @@
 const bcrypt = require('bcrypt-nodejs');
 
-
-
-
 module.exports = {
 
     register: (req, res) => {
@@ -32,7 +29,7 @@ module.exports = {
                 if(isCorrectPassword){
                     console.log('passwords match')
                     req.session.user = user[0]
-                    res.send('Login Successful')
+                    res.send(req.session.user)
                 }
                 else{
                     console.log(err)
@@ -65,7 +62,6 @@ module.exports = {
         const db = req.app.get('db')
         db.get_workout([req.params.id])
         .then(result => {
-            console.log("this is the params id:",req.params.id)
             return res.status(200).send(result)
         })
         .catch(err => {
@@ -91,19 +87,7 @@ module.exports = {
         .catch(err => {
             return res.status(500).send(err.response)
         })
-    }
-    // retrieveWeight: (req, res) => {
-    //     const db = req.app.get('db')
-    //     db.get_weight_entries([req.body.id])
-    //     .then(result => {
-    //         return res.status(200).send(result)
-    //     })
-    //     .catch(err => {
-    //         return res.status(500).send(err.response)
-    //     })
-    // }
-    
-    ,
+    },
     deleteWorkoutItem: (req, res) => {
         const db = req.app.get('db')
         //console.log(req.params.id)

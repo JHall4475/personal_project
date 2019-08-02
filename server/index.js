@@ -36,27 +36,22 @@ let requireAuth = (req, res, next) => {
     }
 }
 
+app.get('/health', (req, res) => {return res.send('ok')})
+app.get('/api/workout/retrieve/:id', controller.retrieveWorkout)
+app.get('/api/user', (req, res) => {res.send(req.session.user)})
+app.get('/api/weightretrieve/:id', controller.retrieveWeight)
+app.get('/api/chart/labels', controller.getLabels)
 
 app.post('/api/register', controller.register)
 app.post('/api/login', controller.loginUser)
 app.post('/api/logoutUser', controller.logoutUser)
 app.post('/api/weight/post', controller.weightPost)
-app.put('/api/workout/post', controller.addToWorkout)
-app.get('/api/workout/retrieve/:id', controller.retrieveWorkout)
-// app.get('/api/workout/retrieve', controller.retrieveWorkout)
+app.post('/api/basal/post', controller.addBasalEntry)
 
-app.get('/api/user', (req, res) => {
-    res.send(req.session.user)
-})
+app.put('/api/workout/post', controller.addToWorkout)
+
 app.delete('/api/workout/:id', controller.deleteWorkoutItem)
 app.delete('/api/weight/:id', controller.deleteWeightEntry)
-app.get('/health', (req, res) => {
-    return res.send('ok')
-})
-app.get('/api/weightretrieve/:id', controller.retrieveWeight)
-app.post('/api/basal/post', controller.addBasalEntry)
-app.get('/api/chart/labels', controller.getLabels)
-
 
 app.listen(port, function(){
     console.log(`Server is running on ${port}`)

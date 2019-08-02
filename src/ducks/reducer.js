@@ -1,18 +1,13 @@
 
 export const initialState = {
-name:'',
-description:'',
-age:0,
-bmr:0,
-caloric_needs:0,
-gender:"male",
-height: 5,
-id: 0,
-ideal_weight: 0,
-profile_pic:"",
-username:"default_user",
-heightFeet: 5,
-heightInches: 0,
+    userprofile:[],
+    heightFeet: 5,
+    heightInches: 0,
+    workoutHolder: [],
+    weightEntries: [],
+    date:[],
+    weight:[],
+
 };
 
 const reducer = (state = initialState, actions) => {
@@ -27,16 +22,23 @@ const reducer = (state = initialState, actions) => {
         case"GET_USER_PROFILE":
         return{
             ...state,
-            age: actions.payload.age,
-            bmr: actions.payload.bmr,
-            caloric_needs: actions.payload.caloric_needs,
-            gender: actions.payload.gender,
-            height: actions.payload.height,
-            id: actions.payload.id,
-            ideal_weight: actions.payload.ideal_weight,
-            profile_pic: actions.payload.profile_pic,
-            username: actions.payload.username,
-
+            userprofile: actions.payload
+        }
+        case"GET_USER_WORKOUT":
+        return{
+            ...state,
+            workoutHolder: actions.payload
+        }
+        case"GET_USER_WEIGHT":
+        return{
+            ...state,
+            weightEntries: actions.payload
+        }
+        case"GRAPH_LABELS":
+        return{
+            ...state,
+            date: actions.payload.date,
+            weight: actions.payload.weight
         }
         default: return state;
     }
