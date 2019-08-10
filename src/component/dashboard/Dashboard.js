@@ -17,8 +17,8 @@ class Dashboard extends Component {
     }
 
 componentDidMount = () => {
-  this.getWeight()
- this.getWorkout()
+    this.getWeight()
+    this.getWorkout()
 }
 
 getWorkout = () => {
@@ -26,9 +26,7 @@ getWorkout = () => {
     axios.get(`/api/workout/retrieve/${id}`
     )
     .then(workouts => {
-        console.log("Dash workout:", workouts)
         store.dispatch({type:"GET_USER_WORKOUT", payload: workouts.data})
-        // this.setState({workoutHolder: workouts.data})
     })
 }
 getWeight = () => {
@@ -38,7 +36,6 @@ getWeight = () => {
         console.log("Dash weights", entries)
         store.dispatch({type:"GET_USER_WEIGHT", payload: entries.data})
         console.log("weight entries redux", this.props.weightEntries)
-        //  this.setState({weightEntries: entries.data})
     })
     .then(this.getLabels)
 }
@@ -55,14 +52,10 @@ getLabels= () => {
       }
       store.dispatch({type:"GRAPH_LABELS", payload: labels})
       console.log("labels date:", this.props.date, "labels weight:", this.props.weight)
-    //   this.setState({
-    //     date: finalDate,
-    //     weight: finalWeight
-    //   })
   }
 
 deleteWorkoutItem = (id) => {
-    console.log(id)
+    console.log("Delete workout ID:", id)
     axios.delete(`/api/workout/${id}`)
     .then((response) => {
         console.log(response.data)
@@ -70,7 +63,7 @@ deleteWorkoutItem = (id) => {
     .then(this.getWorkout())
 }
 deleteWeightEntry = (id) => {
-    console.log(id)
+    console.log("delete weight ID:", id)
     axios.delete(`/api/weight/${id}`)
         .then((response) => {
             console.log(response.data)

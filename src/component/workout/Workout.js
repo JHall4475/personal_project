@@ -4,6 +4,7 @@ import axios from 'axios';
 import WorkoutDisplay from '../workout/WorkoutDisplay';
 import './workout.css'
 import Equipment from './Equipment';
+import {connect} from 'react-redux';
 
 class Workout extends Component {
 
@@ -33,7 +34,7 @@ class Workout extends Component {
     }
 
     deleteWorkoutItem = (id) => {
-        console.log(id)
+        console.log("delete workout item id:", id)
         axios.delete(`/api/workout/${id}`)
             .then((response) => {
                 console.log(response.data)
@@ -45,22 +46,12 @@ class Workout extends Component {
     render() {
         return (
             <div className='workoutpg-wrapper'>
-                <div className='workoutpg-container'>
-                    {/* <div> Workout </div> */}
-                    <br></br>
-                    {/* <Link className="component-link" to='/equipment'>
-                        <p>Create Workout by Equipment</p>
-                    </Link>
-                    <Link className="component-link" to='/exercises'>
-                        <p>Create Workout by Exercises</p>
-                    </Link> */}
-
+                <div className='workoutpg-container'>                   
                     <div className='w-current-workout'>
                         <h3 ><u>Current Workout</u></h3>
-                        {this.state.workoutHolder.map(items => {
+                        {this.props.workoutHolder.map(items => {
                             return (
                                 <div key={items.name}>
-                                {console.log("workout items:", items)}
                                     <WorkoutDisplay
                                         name={items.name}
                                         description={items.description}
@@ -82,4 +73,13 @@ class Workout extends Component {
     }
 }
 
-export default withRouter(Workout);
+
+const mapStateToProps = (state) => {
+    return{
+        userprofile:state.userprofile,
+        id: state.userprofile.id,
+        workoutHolder: state.workoutHolder,
+    }
+}
+
+export default connect(mapStateToProps)(Workout);

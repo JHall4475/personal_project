@@ -13,12 +13,6 @@ class Auth extends Component {
         password:'',
     }
 
-    componentDidMount=() => {
-        store.subscribe(() => {
-            console.log("store changed", store.getState())
-        })
-    }
-
     onInputChangeUsername= (e) => {
         this.setState({username: e.target.value})
     }
@@ -35,7 +29,6 @@ class Auth extends Component {
             store.dispatch({type: "GET_USER_PROFILE", payload: response.data})
             this.props.history.push('/dashboard')
             toast.success(`Welcome ${this.state.username}`)
-            console.log("afterlogin userprofile", this.props.userprofile)
         })
         .catch(() => {
             toast.error(`Invalid Username or Password`);
@@ -86,5 +79,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-//export default Auth;
 export default connect(mapStateToProps)(Auth);
