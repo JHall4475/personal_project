@@ -43,10 +43,13 @@ class Auth extends Component {
     render(){
         return(
             <div className="auth-wrapper">
-            <div className="auth-container">
-            <div className="auth-content"> 
-                
-                <p>Welcome to eWorkoutManager</p>
+             <div className="auth-container">
+                 <div className="auth-content"> 
+                     <div className="auth-header">
+                        <h1>Welcome to eWorkoutManager</h1>
+                            <h3>Your body. Your workouts. Your data. Your progress.
+                            </h3>
+                    </div>
                 <p>Please Sign in or Register</p>
                 <input
                 onChange={this.onInputChangeUsername}
