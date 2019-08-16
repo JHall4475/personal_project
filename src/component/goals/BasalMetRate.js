@@ -119,9 +119,6 @@ class BasalMetRate extends Component {
                                 value={this.state.heightFeet}
                                 onChange={this.onChangeHeight}
                             >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
                                 <option>4</option>
                                 <option defaultValue="5">5</option>
                                 <option>6</option>

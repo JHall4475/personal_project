@@ -3,7 +3,7 @@ import axios from 'axios';
 import {addToWorkout} from '../../ducks/actions';
 import{getUserProfile} from '../../ducks/actions'
 import {connect} from 'react-redux';
-import '../workout/equipment.scss';
+import '../workout/equipment.css';
 import { toast } from 'react-toastify';
 
 class Equipment extends Component {

@@ -41,6 +41,7 @@ app.get('/api/workout/retrieve/:id', controller.retrieveWorkout)
 app.get('/api/user', (req, res) => {res.send(req.session.user)})
 app.get('/api/weightretrieve/:id', controller.retrieveWeight)
 app.get('/api/chart/labels', controller.getLabels)
+app.get('/api/weight/last/:id', controller.getLastWeight)
 
 app.post('/api/register', controller.register)
 app.post('/api/login', controller.loginUser)

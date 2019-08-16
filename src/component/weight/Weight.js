@@ -45,14 +45,17 @@ class Weight extends Component {
         }
         return (
             <div className='weightpg-wrapper'>
-                <div className='weightpg-container'>Current Weight Log
-        <br></br>
+                <h2 className='weight-header'>Weight Log</h2>
+                    <div className='weightpg-container'>
+                <div className="graph-container">
                     <Line
                         data={data}
                         width={500}
                         height={500}
                         options={options}
                     />
+                </div>
+                <div className="weight-entries-container">
                     {this.props.weightEntries.map(entries => {
                         return (
                             <div key={entries.id + entries.date}>
@@ -63,15 +66,14 @@ class Weight extends Component {
                                         deleteWeightEntry={() => this.deleteWeightEntry(entries.entry_number)}
                                     ></WeightDisplay>
                                 </div>
-
                             </div>
-                        )
-                    })}
-                    <Link className="component-link" to='/wizard'>
+                                )
+                     })}
+                       <Link className="component-link" to='/wizard'>
                         <p>Add Weight Entry</p>
                     </Link>
-
-                    {/* <button onClick={this.onClickGraph}>Show Graph</button>    */}
+                </div>
+                  
 
 
                 </div>

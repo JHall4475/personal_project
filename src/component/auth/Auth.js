@@ -64,6 +64,8 @@ class Auth extends Component {
                 <br></br>
 
                 <button onClick={() => this.login()}>Login</button>
+                <br></br>
+                <br></br>
                 <button onClick={() => this.registerNewUser()}>Register</button>
                 </div>
             </div>

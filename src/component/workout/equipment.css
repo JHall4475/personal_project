@@ -3,35 +3,30 @@
  
 .eqp-wrapper{
     display: flex;
-    height: auto;
-    width: auto;
-    justify-content: center;
+    width: 100%;
     flex-direction: column;
-     overflow: scroll;
-    
+    overflow: scroll;
+    border: solid 2px black;
 }
 .eqp-container-wrapper{
-    height:84vh;
     margin: 2px;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     align-items: center;
     overflow: scroll;
+    border: solid 2px green;
 }
 .headerContainer {
+    height: 5vh;
+    width: 100%;
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    height: 5vh;
     justify-content: space-evenly;
     align-items: center;
-    width: 100%;
     background-color: red;
-    margin: 1px;
-    margin-left: 5px;
     padding: 3px;
-    // margin-top: 10vh;
+    border: solid orange 2px;
 }
 
 .equipmentDiv {
@@ -57,11 +52,12 @@
 }
 
 .containerDiv {
-    height: 200px;
-    min-height: 200px;
+    height: 25%;
+    min-height: 25%;
+    max-height: 25%;
+    width: 95%;
     margin: 5px;
     padding: 5px;
-    width: 50vw;
     border: solid white 2px;
     background-color: #004E64;
     display: flex;
@@ -70,8 +66,4 @@
     overflow: scroll;
    
 }
-// .containerDivHeader {
-    
-//     /* align-items: baseline;
-//     justify-content: flex-start */
-// }
+

@@ -88,6 +88,16 @@ module.exports = {
             return res.status(500).send(err.response)
         })
     },
+    getLastWeight: (req, res) => {
+        const db = req.app.get('db')
+        db.get_last_weight([req.params.id])
+        .then(result => {
+            return res.status(200).send(result)
+        })
+        .catch(err => {
+            return res.status(500).send(err.response)
+        })
+    },
     deleteWorkoutItem: (req, res) => {
         const db = req.app.get('db')
         //console.log(req.params.id)

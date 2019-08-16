@@ -7,6 +7,8 @@ export const initialState = {
     weightEntries: [],
     date:[],
     weight:[],
+    lastWeight: [],
+
 
 };
 
@@ -33,6 +35,12 @@ const reducer = (state = initialState, actions) => {
         return{
             ...state,
             weightEntries: actions.payload
+        }
+        case"GET_USER_LAST_WEIGHT":
+        return{
+            ...state,
+            lastWeight: actions.payload
+
         }
         case"GRAPH_LABELS":
         return{

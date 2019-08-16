@@ -5,6 +5,7 @@ import WorkoutDisplay from '../workout/WorkoutDisplay';
 import './workout.css'
 import Equipment from './Equipment';
 import {connect} from 'react-redux';
+import Exercises from './Exercises';
 
 class Workout extends Component {
 
@@ -46,9 +47,10 @@ class Workout extends Component {
     render() {
         return (
             <div className='workoutpg-wrapper'>
+                <h2>Workout Manager</h2>
                 <div className='workoutpg-container'>                   
                     <div className='w-current-workout'>
-                        <h3 ><u>Current Workout</u></h3>
+                        <h3>Current Workout</h3>
                         {this.props.workoutHolder.map(items => {
                             return (
                                 <div key={items.name}>
@@ -62,11 +64,12 @@ class Workout extends Component {
                             )
                         })}
                     </div>
-                    <div className='w-add-to'>
-                        <h3><u>Add to Workout</u></h3>
+                <div className='w-add-to'>
+                        <h3>Add to Workout</h3>
                         <Equipment></Equipment>
-                    </div>
+                        <Exercises></Exercises>
 
+                </div>
                 </div>
             </div>
         )

@@ -8,13 +8,9 @@ import IdealWeight from './IdealWeight';
 function Goals() {
 
     return (
-        <div className="goals-wrapper">
+    <div className="goals-wrapper">
+         <h2 className="goals-header">Goals</h2>
             <div className="goals-container">
-                <h2 className="goals-header">Goals</h2>
-                <h3 className='goals-quote'>"We are what we repeatedly do. Excellence, then, is not an act but a habit.
-<br></br>
-                    – Aristotle"</h3>
-        <p> Basal Metabolic Rate </p>
                 <div className='goals-boxes'>
                     <div className='goals-basal'>
                         <BasalMetRate></BasalMetRate>
@@ -22,8 +18,21 @@ function Goals() {
                     <div className='goals-caloric'>
                         <CaloricNeeds></CaloricNeeds>
                     </div>
-                    <div>
+                    <div className='goals-ideal'>
                         <IdealWeight></IdealWeight>
+                    </div>
+                    <div className="goals-options">
+                        this is goal option 1 at one pound lost per week
+                        <button>Set Goal</button>
+
+                    </div>
+                    <div className="goals-options">
+                        this is goal option 2 at 1.5 pounds lost per week
+                        <button>Set Goal</button>
+                    </div>
+                    <div className="goals-options">
+                        this is goal option 3 at two pounds lost per week
+                        <button>Set Goal</button>
                     </div>
                 </div>
             </div>

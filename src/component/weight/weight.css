@@ -1,34 +1,42 @@
 
-
-
 .weightpg-wrapper{
 display: flex;
+flex-direction: column;
 height: 84vh;
-width: 100vw;
-background-color: white;
-color: black;
+width: 100%;
 align-items: center;
 justify-content: center;
 overflow: scroll;
 margin-top: 4vh;
 border: 5px solid red;
-
+}
+.weight-header{
+    width: 100%;
+    border: 2px solid cornflowerblue;
 
 }
 
 .weightpg-container{
-    display: flex;
     height: 100%;
-    width:70%;
+    width:100%;
+    display: flex;
     overflow: scroll;
-    flex-direction: column;
-    padding: 2%;
-    border: 10px solid blue;
+    flex-direction: row;
+    border: 5px solid blue;
     position: auto;
     top:50px;
-
 }
 
 .weight-display-kernel{
-    border:1px solid;
+    border: 3px solid black;
+}
+
+.graph-container{
+    border: 3px solid green;
+    width: 50%;
+}
+.weight-entries-container{
+    width:50%;
+    border: 3px solid orange;
+    min-height: 10%;
 }
