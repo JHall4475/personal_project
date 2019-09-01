@@ -32,10 +32,13 @@ textarea, select, input, button { outline: none; }
     /* flex-flow: column; */
     /* justify-content: flex-end; */
     border: 2px solid red;
+    color: #d9e5d6;
 }
 .auth-header{
     height: 80vh;
     width: 80vw;
+    display: flex;
+    flex-direction: column;
     border: 3px solid orange;
     color: #d9e5d6;
     font-size: 200%;

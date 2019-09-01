@@ -19,6 +19,9 @@ class Dashboard extends Component {
 componentDidMount = () => {
     this.getWeight()
     this.getWorkout()
+    console.log("dash userprofile", this.props.userprofile)
+    
+
 }
 
 getWorkout = () => {
@@ -72,14 +75,15 @@ deleteWeightEntry = (id) => {
 
 
     render() {
+
         const options = {
            legend:{
                labels:{
-                   fontColor:"rgb(217, 229, 214)"
+                //    fontColor:"rgb(217, 229, 214)"
                }
            },
             gridLines:{
-                color:"rgb(217, 229, 214)",
+                // color:"rgb(217, 229, 214)",
             },
             scales: {
                 xAxes: [{ 
@@ -87,7 +91,7 @@ deleteWeightEntry = (id) => {
                         display: true,
                     },
                     ticks: {
-                      fontColor: "rgb(217, 229, 214)", // this here
+                    //   fontColor: "rgb(217, 229, 214)", // this here
                     },
                 }],
                 yAxes: [{
@@ -96,7 +100,7 @@ deleteWeightEntry = (id) => {
                         display: true,
                     },
                     ticks: {
-                        fontColor: "rgb(217, 229, 214)", // this here
+                        // fontColor: "rgb(217, 229, 214)", // this here
                       },
                 }],
             },
@@ -122,7 +126,7 @@ deleteWeightEntry = (id) => {
             backgroundColor: 'rgb(95, 158, 160)',
             borderColor: '#494949',
             data: this.props.weight,
-            zeroLineColor: 'rgb(217, 229, 214)',
+            // zeroLineColor: 'rgb(217, 229, 214)',
             }]
         }
 
@@ -151,9 +155,24 @@ deleteWeightEntry = (id) => {
             </div>
             
 
-            <div className="dash-goals-container"><h3>Goals</h3>
-            <h3 className='goals-quote'>"A journey of a thousand miles begins with a single step."
-– Lao Tzu</h3>
+     <div className="dash-goals-container">
+         <h3>Goals</h3>
+         <div >
+             <img className="dash-goals-img" src={this.props.profile_pic}></img>
+         </div>
+            <h3 className='goals-quote'>
+                "A journey of a thousand miles begins with a single step."
+                – Lao Tzu
+            </h3>
+            <div>
+                Your current Basal Metabolic Rate: {this.props.bmr}
+            </div>
+            <div>
+                Your current Caloric Needs: {this.props.calneeds}
+            </div>
+            <div>
+                Your Ideal Weight: {this.props.idealweight}
+            </div>
 
             
             </div>
@@ -191,10 +210,14 @@ const mapStateToProps = (state) => {
         userprofile: state.userProfile,
         username: state.userprofile.username,
         userid: state.userprofile.id,
+        profile_pic: state.userprofile.profile_pic,
         weightEntries: state.weightEntries,
         workoutHolder: state.workoutHolder,
         date: state.date,
-        weight: state.weight
+        weight: state.weight,
+        bmr: state.userprofile.bmr,
+        calneeds: state.userprofile.caloric_needs,
+        idealweight: state.userprofile.ideal_weight
     }
 }
 

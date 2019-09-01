@@ -21,6 +21,7 @@ function Goals() {
                     <div className='goals-ideal'>
                         <IdealWeight></IdealWeight>
                     </div>
+                    <div className="goals-options-container">
                     <div className="goals-options">
                         this is goal option 1 at one pound lost per week
                         <button>Set Goal</button>
@@ -33,6 +34,7 @@ function Goals() {
                     <div className="goals-options">
                         this is goal option 3 at two pounds lost per week
                         <button>Set Goal</button>
+                    </div>
                     </div>
                 </div>
             </div>

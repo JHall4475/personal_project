@@ -24,7 +24,7 @@ class WeightWizard extends Component {
     dateOfToday = () => {
         var moment = require('moment');
         var today = moment().format('YYYY-MM-DD').toString();
-        console.log(today)
+        console.log("weight wizard today:", today)
             this.setState({date: today})
             }
 

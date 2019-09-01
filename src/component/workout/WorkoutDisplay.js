@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import './workoutDisplay.css'
 
+// const DeleteButton = props => <div>{props.delete}</div>
+const deleteButton =  <button onClick={() => this.props.deleteWorkoutItem()}>Delete</button>
+
+
+
 class WorkoutDisplay extends Component {
+
     
     render(){
         const{description, name}=this.props
@@ -10,8 +16,8 @@ class WorkoutDisplay extends Component {
                 <div className='wod-cntr'>
                 <p>Name: {name}</p>
                 <p>Description: {description}</p>
-                
-                <button onClick={() => this.props.deleteWorkoutItem()}>Delete</button>
+                {/* <div>{deleteButton}</div> */}
+                {/* <button onClick={() => this.props.deleteWorkoutItem()}>Delete</button> */}
                 </div>
             </div>
         )

@@ -28,6 +28,7 @@ module.exports = {
                 }
                 if(isCorrectPassword){
                     console.log('passwords match')
+                    console.log(req.session.user)
                     req.session.user = user[0]
                     res.send(req.session.user)
                 }
@@ -81,16 +82,6 @@ module.exports = {
     retrieveWeight: (req, res) => {
         const db = req.app.get('db')
         db.get_weight_entries([req.params.id])
-        .then(result => {
-            return res.status(200).send(result)
-        })
-        .catch(err => {
-            return res.status(500).send(err.response)
-        })
-    },
-    getLastWeight: (req, res) => {
-        const db = req.app.get('db')
-        db.get_last_weight([req.params.id])
         .then(result => {
             return res.status(200).send(result)
         })

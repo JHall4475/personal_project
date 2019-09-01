@@ -1,37 +1,21 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import WorkoutDisplay from '../workout/WorkoutDisplay';
 import './workout.css'
 import Equipment from './Equipment';
-import {connect} from 'react-redux';
-import Exercises from './Exercises';
+import { connect } from 'react-redux';
+import Muscles from './Muscles';
 
 class Workout extends Component {
 
     state = {
+        selectedOption: "equipment",
         workoutHolder: [],
-        userProfile:[],
+        userProfile: [],
     }
 
-    componentDidMount = () => {
-        this.getUserProfile()
-        this.getWorkout()
-    }
-    getUserProfile = () => {
-        axios.get('/api/user')
-        .then(user => {
-            this.setState({userProfile: user.data})
-        })
-    }
-
-    getWorkout = () => {
-        axios.get('/api/workout/retrieve', {userId: this.state.userProfile.id}
-        )
-            .then(workouts => {
-                console.log("workout:", workouts)
-                this.setState({ workoutHolder: workouts.data })
-            })
+    handleOptionChange = (e) => {
+        this.setState({ selectedOption: e.target.value })
     }
 
     deleteWorkoutItem = (id) => {
@@ -48,28 +32,50 @@ class Workout extends Component {
         return (
             <div className='workoutpg-wrapper'>
                 <h2>Workout Manager</h2>
-                <div className='workoutpg-container'>                   
+                <div className='workoutpg-container'>
                     <div className='w-current-workout'>
                         <h3>Current Workout</h3>
                         {this.props.workoutHolder.map(items => {
                             return (
-                                <div key={items.name}>
+                                <div key={items.workout_id}>
                                     <WorkoutDisplay
                                         name={items.name}
                                         description={items.description}
-                                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.id)}
-                                    >
+                                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.id)} >
                                     </WorkoutDisplay>
                                 </div>
                             )
                         })}
                     </div>
-                <div className='w-add-to'>
+                    <div className='w-add-to'>
                         <h3>Add to Workout</h3>
-                        <Equipment></Equipment>
-                        <Exercises></Exercises>
+                        <div className="w-toggle-container">
+                            <label>
+                                Search by Equipment
+                                <input
+                                    type="radio"
+                                    value="equipment"
+                                    checked={this.state.selectedOption === "equipment"}
+                                    onChange={this.handleOptionChange}
+                                ></input>
+                            </label>
+                            <label>
+                                Search by Muscles
+                                <input
+                                    type="radio"
+                                    value="muscles"
+                                    checked={this.state.selectedOption === "muscles"}
+                                    onChange={this.handleOptionChange}
+                                ></input>
+                            </label>
+                        </div>
+                        <div>
+                        {this.state.selectedOption === "equipment" ? <Equipment></Equipment> : <Muscles></Muscles>}
+                        </div>
 
-                </div>
+                       
+
+                    </div>
                 </div>
             </div>
         )
@@ -78,8 +84,8 @@ class Workout extends Component {
 
 
 const mapStateToProps = (state) => {
-    return{
-        userprofile:state.userprofile,
+    return {
+        userprofile: state.userprofile,
         id: state.userprofile.id,
         workoutHolder: state.workoutHolder,
     }

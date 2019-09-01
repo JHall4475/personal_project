@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import WeightDisplay from '../weight/WeightDisplay';
 import './weight.css';
@@ -32,7 +32,8 @@ class Weight extends Component {
                     scaleID: 'x-axis-0',
                 }]
             },
-            maintainAspectRation: false
+            maintainAspectRation: false,
+            responsive: true
         }
         const data = {
             labels: this.props.date,

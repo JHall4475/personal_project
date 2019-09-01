@@ -9,7 +9,20 @@ class Profile extends Component {
         return(
             <div className="profile-wrapper">
                 <div className="profile-container">
+                    <div>
                     Username: <input></input>
+                    </div>
+                    <div>
+                        Password: <input></input>
+                    </div>
+                    <div>
+                        Personal Goal Quote: <input></input>
+                    </div>
+                    <div>
+                        Profile Picture: <input></input>
+                    </div>
+                    
+                    
                     
                 </div>
             </div>

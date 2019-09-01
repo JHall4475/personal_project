@@ -6,31 +6,20 @@ import store from '../../ducks/store';
 
 
 class IdealWeight extends Component{
-    state={};
+    state={
+
+    };
 
     componentDidMount= () => {
         // console.log("ideal weight entries:", this.props.weightEntries.slice(-1))
         console.log("ideal weight userID:", this.props.userid)
-        this.getLastWeight()
+        // this.getLastWeight()
         
        
     
     }
 
-   getLastWeight= () => {
-    // const lastWeightEntry = this.props.weightEntries.slice(-1)
-    // const finalEntry = lastWeightEntry.weight
-    // console.log("lastweightentry", lastWeightEntry)
-    // console.log("finalEntry", finalEntry)
-    const id = this.props.userid
-    axios.get(`/api/weight/last/${id}`)
-    .then(entry => {
-        console.log("axios idWghtLast entry", entry)
-        store.dispatch({type:"GET_USER_LAST_WEIGHT", payload: entry.data})
-        
-    })
-    .then(console.log("idwght last weight", this.props.lastWeight))
-   }
+  
 
 render(){
         return(
@@ -79,7 +68,7 @@ render(){
                         </label>
                     </form>
 
-                <p>Your Current Weight is: {215}</p>
+                <p>Your Ideal Weight is: {215}</p>
             </div>
         )
     }

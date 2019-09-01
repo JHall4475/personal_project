@@ -28,12 +28,7 @@ class BasalMetRateFemale extends Component {
 
     harrisBenedict = () => {
        let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
-       console.log(totalHeight)
-       console.log(6.23*Number(this.state.weight))
-       console.log(12.7 * totalHeight)
-       let bmr = 655+(4.35*Number(this.state.weight))+(4.7 * totalHeight) - (4.7 * Number(this.state.age))
-        console.log(bmr)
-        
+       let bmr = 655+(4.35*Number(this.state.weight))+(4.7 * totalHeight) - (4.7 * Number(this.state.age))        
         let roundedBMR = Math.round(bmr)
         this.setState({basalMetRate: roundedBMR})
     }

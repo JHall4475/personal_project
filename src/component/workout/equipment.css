@@ -2,31 +2,38 @@
 #element { margin:0; padding:0; font-size:100%; line-height:1; }
  
 .eqp-wrapper{
+    height: 100%;
+    min-height: 20vh; 
     display: flex;
     width: 100%;
     flex-direction: column;
     overflow: scroll;
-    border: solid 2px black;
+    border: solid 4px green;
 }
 .eqp-container-wrapper{
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
     margin: 2px;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    border: solid 2px green;
+    border: solid 2px blue;
 }
 .headerContainer {
-    height: 5vh;
+    height: fit-content;
     width: 100%;
+    min-height: 6vh;
     display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: red;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    /* align-items: center; */
+    align-content: space-around;
+    /* background-color: red; */
     padding: 3px;
     border: solid orange 2px;
+    position: relative;
 }
 
 .equipmentDiv {
@@ -39,6 +46,8 @@
 .equip-btn {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
 }
 
 .exerciseByEquipment {

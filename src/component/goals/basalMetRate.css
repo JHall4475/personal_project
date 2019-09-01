@@ -1,13 +1,16 @@
-/* .basal-wrapper{
-    height: 84vh;
-    background-color: orange;
-    display: flex;
-    align-items: center;
+.basal-wrapper{
+  border: 3px solid red;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
 
-}*/
+}
 
-/* 
+
 .basal-container{
     margin-top: 4vh;
     width: 30vw;
-} */
+}

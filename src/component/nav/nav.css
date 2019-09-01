@@ -1,5 +1,5 @@
 .nav-wrapper {
-    background-color: #494949;
+    background-color: #6B6B6B;
     display: flex;
     justify-content: flex-end;
     height: 4vh;
@@ -15,12 +15,16 @@
     flex-flow: row-reverse;
     align-items: center;
     justify-content: space-evenly;
-    color: #d9e5d6
 
 }
 
 .nav-link {
-    color: #d9e5d6
+    color: #d9e5d6;
+    text-decoration: none;
+
+}
+.nav-link:hover{
+    background-color: darkgrey;
 }
 
 .profile-pic{

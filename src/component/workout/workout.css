@@ -20,7 +20,7 @@
     width: 50%;
     height: auto;
     overflow: scroll;
-    border: solid black 5px;
+    border: solid orange 5px;
 }
 
 .w-add-to{
@@ -28,4 +28,11 @@
     width: 50%;
     border: solid yellow 5px;
     overflow: scroll;
+}
+.w-toggle-container{
+    height: fit-content;
+    min-height: 3vh;
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid red;
 }

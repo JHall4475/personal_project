@@ -6,11 +6,11 @@ height: 84vh;
 width: 100%;
 align-items: center;
 justify-content: center;
-overflow: scroll;
 margin-top: 4vh;
 border: 5px solid red;
 }
 .weight-header{
+
     width: 100%;
     border: 2px solid cornflowerblue;
 
@@ -20,20 +20,28 @@ border: 5px solid red;
     height: 100%;
     width:100%;
     display: flex;
-    overflow: scroll;
     flex-direction: row;
     border: 5px solid blue;
-    position: auto;
-    top:50px;
 }
 
 .weight-display-kernel{
+    height: 100%;
+    width: 100%;
     border: 3px solid black;
 }
 
 .graph-container{
+    height: 100% !important;
+    width: 50% !important;
+    max-width: 50%;
+    max-height: 100%;
+    position: relative;
+    display: flex;
     border: 3px solid green;
-    width: 50%;
+    padding: 1%;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 .weight-entries-container{
     width:50%;

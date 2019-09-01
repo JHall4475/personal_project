@@ -45,6 +45,10 @@
     justify-content: center;
     border: 3px chartreuse solid;
 }
+.dash-goals-img{
+    height: 60%;
+    width: 60%;
+}
 
 .weight-container{
     height: 100%;

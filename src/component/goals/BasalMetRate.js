@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import BasalMetRateFemale from './BasalMetRateFemale';
 import axios from 'axios';
 import './basalMetRate.css';
 
@@ -85,8 +84,9 @@ class BasalMetRate extends Component {
         return (
             <div className="basal-wrapper">
                 <div className='basal-container'>
-                    Basal Metabolic Rate Calculator
-                <br></br>
+
+                    <p>Basal Metabolic Rate Calculator </p>
+
                     <form>
                         <div className="gender-form">
                             <label>
@@ -126,7 +126,7 @@ class BasalMetRate extends Component {
                                 <option>8</option>
                             </select>
                         </label>
-                        
+
                         <label>
                             Height in Inches <select
                                 value={this.state.heightInches}
@@ -162,7 +162,6 @@ class BasalMetRate extends Component {
                     <br></br>
                     <button onClick={() => this.calculateBmr()}>Calculate</button>
                     <div>Your BasalMetRate is : {this.state.basalMetRate}</div>
-                    {/* <BasalMetRateFemale></BasalMetRateFemale> */}
 
                 </div>
             </div>

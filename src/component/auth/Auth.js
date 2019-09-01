@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import './auth.css';
-import {addLoginUserId} from '../../ducks/actions';
 import {connect} from 'react-redux';
 import  store  from '../../ducks/store'
 
@@ -19,6 +18,11 @@ class Auth extends Component {
     onInputChangePassword = (e) => {
         this.setState({password: e.target.value})
     }
+    onEnterDown= (e) => {
+        if(e.which === 13) {
+            this.login()
+        }
+    }
 
     login(){
         axios.post(`/api/login`, {
@@ -26,6 +30,7 @@ class Auth extends Component {
             password: this.state.password
         })
         .then((response) => {
+            console.log("auth login response:", response)
             store.dispatch({type: "GET_USER_PROFILE", payload: response.data})
             this.props.history.push('/dashboard')
             toast.success(`Welcome ${this.state.username}`)
@@ -47,8 +52,11 @@ class Auth extends Component {
                  <div className="auth-content"> 
                      <div className="auth-header">
                         <h1>Welcome to eWorkoutManager</h1>
-                            <h3>Your body. Your workouts. Your data. Your progress.
-                            </h3>
+                            <h3>Your body.</h3>
+                            <h3> Your workouts.</h3>
+                            <h3> Your data.</h3>
+                            <h3> Your progress.</h3>
+                            
                     </div>
                 <p>Please Sign in or Register</p>
                 <input
@@ -61,6 +69,7 @@ class Auth extends Component {
                 <input
                 onChange={this.onInputChangePassword}
                 value={this.state.password}
+                onKeyDown={this.onEnterDown}
                 type="password"
                 placeholder="Password"
                 ></input>
