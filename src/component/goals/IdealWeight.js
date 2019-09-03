@@ -11,12 +11,9 @@ class IdealWeight extends Component{
     };
 
     componentDidMount= () => {
-        // console.log("ideal weight entries:", this.props.weightEntries.slice(-1))
-        console.log("ideal weight userID:", this.props.userid)
-        // this.getLastWeight()
         
-       
-    
+        console.log("ideal weight userID:", this.props.userid)
+        
     }
 
   

@@ -1,1 +1,1 @@
-DELETE FROM workout WHERE id = $1
+DELETE FROM workout WHERE workout_id = $1

@@ -93,7 +93,13 @@ module.exports = {
         const db = req.app.get('db')
         //console.log(req.params.id)
         db.delete_workout_item([req.params.id])
+        .then(
+            result => {
         res.send("Successfully deleted Workout Item")
+         })
+        .catch(err => {
+            return res.status(500).send(err.response)
+        })
     },
     deleteWeightEntry: (req, res) => {
         const db = req.app.get('db')

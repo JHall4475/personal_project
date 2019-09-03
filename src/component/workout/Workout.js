@@ -14,6 +14,10 @@ class Workout extends Component {
         userProfile: [],
     }
 
+    componentDidMount = () => {
+        console.log('workout location:', this.props.location.pathname)
+    }
+
     handleOptionChange = (e) => {
         this.setState({ selectedOption: e.target.value })
     }
@@ -24,11 +28,11 @@ class Workout extends Component {
             .then((response) => {
                 console.log(response.data)
             })
-            .then(this.getWorkout())
     }
 
 
     render() {
+
         return (
             <div className='workoutpg-wrapper'>
                 <h2>Workout Manager</h2>
@@ -41,7 +45,8 @@ class Workout extends Component {
                                     <WorkoutDisplay
                                         name={items.name}
                                         description={items.description}
-                                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.id)} >
+                                       delete={<button>button</button>}
+                                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.workout_id)} >
                                     </WorkoutDisplay>
                                 </div>
                             )

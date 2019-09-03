@@ -19,9 +19,6 @@ class Dashboard extends Component {
 componentDidMount = () => {
     this.getWeight()
     this.getWorkout()
-    console.log("dash userprofile", this.props.userprofile)
-    
-
 }
 
 getWorkout = () => {
@@ -132,10 +129,6 @@ deleteWeightEntry = (id) => {
 
         return (
             <div className="dashboard-wrapper">
-
-                <div></div>
-                
-                <br></br>
                 <div className="display-container">
                 
                 <div className="workout-container">
@@ -146,12 +139,12 @@ deleteWeightEntry = (id) => {
                         <WorkoutDisplay
                         name={items.name}
                         description={items.description}
-                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.workout_id)}
-                        >
+                        deleteWorkoutItem={() => this.deleteWorkoutItem(items.workout_id)} >
                         </WorkoutDisplay>
                     </div>
-                )
-            })}
+                            )
+                })}
+
             </div>
             
 
