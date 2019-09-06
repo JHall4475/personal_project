@@ -32,7 +32,7 @@ class Weight extends Component {
                     scaleID: 'x-axis-0',
                 }]
             },
-            maintainAspectRation: false,
+            maintainAspectRatio: false,
             responsive: true
         }
         const data = {
@@ -95,7 +95,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(Weight);
-
-
-
-//export default withRouter(Weight);

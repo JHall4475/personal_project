@@ -35,9 +35,6 @@
 .goals-basal{
     height: 25%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: solid orange 2px;
 
 }
@@ -45,9 +42,6 @@
 .goals-caloric{
     height: 25%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: 2px solid purple;
 }
 
@@ -57,18 +51,8 @@
     border: 2px solid blue;
 }
 
-.goals-options-container{
+.goals-time-option{
     height: 25%;
     width: 100%;
-    display: flex;
-    justify-content: space-evenly;
     border: 2px solid greenyellow;
-}
-
-.goals-options{
-    height: 100%;
-    width: 33.33%;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid red;
 }

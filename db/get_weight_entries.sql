@@ -3,4 +3,4 @@ From weight
 JOIN userprofile 
 ON weight.id = userprofile.id
 WHERE userprofile.id = $1
-ORDER BY date ASC LIMIT 5
+ORDER BY date ASC LIMIT 14

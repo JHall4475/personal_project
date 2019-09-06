@@ -1,0 +1,31 @@
+.idweight-wrapper{
+    height: 100%;
+    border: 2px solid red;
+    overflow: scroll;
+}
+.box-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border: 2px solid magenta;
+    /* background-color: blueviolet; */
+}
+.calc-box{
+    height: 100%;
+    width: 50%;
+    border: 2px solid blue;
+}
+.gender-form{
+    flex-direction: row;
+}
+.info-box{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    overflow: scroll;
+    border: 2px solid green;
+}

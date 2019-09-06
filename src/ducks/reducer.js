@@ -1,7 +1,7 @@
 
 export const initialState = {
     userprofile:[],
-    heightFeet: 5,
+    heightFeet: 0,
     heightInches: 0,
     workoutHolder: [],
     weightEntries: [],

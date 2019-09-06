@@ -1,0 +1,12 @@
+.time-goal-wrapper{
+    height: 100%;
+    width: 100%;
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: row;
+}
+.time-options{
+    height: 100%;
+    width: 33.333%;
+    border: 2px solid red;
+}

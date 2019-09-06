@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom'
 import './weightDisplay.css';
 
 class WeightDisplay extends Component {
+    
+    buttonRender = () => {
+        if( this.props.location.pathname === '/dashboard'){ 
+            return null
+        }else{
+            return <button onClick={() => this.props.deleteWeightEntry()}>Delete</button>
+        }
+    }
+
     render(){
         const{date, weight}=this.props
         return(
@@ -9,10 +19,10 @@ class WeightDisplay extends Component {
                 <div className="wd-cntr">
                 <p>Date: {date}</p>
                 <p>Weight: {weight}</p>
-                <button onClick={() => this.props.deleteWeightEntry()}>Delete</button>
+                <div>{this.buttonRender()}</div>
                 </div>
             </div>
         )
     }
 }
-export default WeightDisplay;
+export default withRouter(WeightDisplay);

@@ -31,7 +31,7 @@ class WeightWizard extends Component {
      getUserProfile = () => {
           axios.get('/api/user')
             .then(user => {
-            console.log("user:", user.data)
+            console.log("weight wizard user data:", user.data)
              this.setState({userProfile: user.data})
                    
                 })

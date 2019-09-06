@@ -151,7 +151,7 @@ deleteWeightEntry = (id) => {
      <div className="dash-goals-container">
          <h3>Goals</h3>
          <div >
-             <img className="dash-goals-img" src={this.props.profile_pic}></img>
+             <img className="dash-goals-img" src={this.props.profile_pic} alt="profile picture that is chosen by the user"></img>
          </div>
             <h3 className='goals-quote'>
                 "A journey of a thousand miles begins with a single step."
@@ -165,6 +165,9 @@ deleteWeightEntry = (id) => {
             </div>
             <div>
                 Your Ideal Weight: {this.props.idealweight}
+            </div>
+            <div>
+                Your current goal is to reach your ideal weight in: {16} weeks
             </div>
 
             

@@ -3,6 +3,7 @@ import './goals.css'
 import BasalMetRate from './BasalMetRate';
 import CaloricNeeds from './CaloricNeeds';
 import IdealWeight from './IdealWeight';
+import TimeGoal from './TimeGoal';
 
 
 function Goals() {
@@ -21,20 +22,8 @@ function Goals() {
                     <div className='goals-ideal'>
                         <IdealWeight></IdealWeight>
                     </div>
-                    <div className="goals-options-container">
-                    <div className="goals-options">
-                        this is goal option 1 at one pound lost per week
-                        <button>Set Goal</button>
-
-                    </div>
-                    <div className="goals-options">
-                        this is goal option 2 at 1.5 pounds lost per week
-                        <button>Set Goal</button>
-                    </div>
-                    <div className="goals-options">
-                        this is goal option 3 at two pounds lost per week
-                        <button>Set Goal</button>
-                    </div>
+                    <div className="goals-time-option">
+                        <TimeGoal></TimeGoal>
                     </div>
                 </div>
             </div>
