@@ -90,8 +90,8 @@ class Muscles extends Component {
 
 const mapStateToProps = (state) => {
     return{
-        userproile: state.userprofile,
-        userId: state.userprofile.id
+        userproile: state.userProfile,
+        userId: state.userProfile.id
     }
 }
 

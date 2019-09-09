@@ -31,8 +31,10 @@ class TimeGoal extends Component {
     calorieCounter = (lbs) => {
         return(
         <div>
+            <div>Your current weight is: {this.state.currentWeight}</div>
+            <div>Your ideal weight is: {this.state.idealWeight}</div>
             <div>
-                {lbs} calories/week or {lbs/3500} lb(s)/week
+            if you loose {lbs} calories/week or {lbs/3500} lb(s)/week
             </div>
             <div>
                 {Number((lbs / 7))} calories per day
@@ -40,8 +42,6 @@ class TimeGoal extends Component {
             <div>
                 {Number((lbs / 7) / 2)} calories from each diet and exercise
             </div>
-            <div>Your current weight is: {this.state.currentWeight}</div>
-            <div>Your ideal weight is: {this.state.idealWeight}</div>
             <div>To reach your ideal weight it will take {Math.round(this.state.weeks / (lbs/3500))} weeks</div>
         </div>
         )
@@ -73,7 +73,7 @@ class TimeGoal extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userid: state.userprofile.id,
+        userid: state.userProfile.id,
     }
 }
 

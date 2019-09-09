@@ -3,7 +3,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import './auth.css';
 import {connect} from 'react-redux';
-import  store  from '../../ducks/store'
 
 class Auth extends Component {
 
@@ -31,7 +30,7 @@ class Auth extends Component {
         })
         .then((response) => {
             console.log("auth login response:", response)
-            store.dispatch({type: "GET_USER_PROFILE", payload: response.data})
+            this.props.dispatch({type: "GET_USER_PROFILE", payload: response.data})
             this.props.history.push('/dashboard')
             toast.success(`Welcome ${this.state.username}`)
         })
@@ -87,9 +86,9 @@ class Auth extends Component {
 }
 const mapStateToProps = (state) => {
     return{
-        userprofile: state.userprofile,
-        username: state.userprofile.username,
-        id: state.userprofile.id,
+        userprofile: state.userProfile,
+        username: state.userProfile.username,
+        id: state.userProfile.id,
     }
 }
 

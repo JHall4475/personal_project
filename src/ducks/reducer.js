@@ -1,6 +1,6 @@
 
 export const initialState = {
-    userprofile:[],
+    userProfile:[],
     heightFeet: 0,
     heightInches: 0,
     workoutHolder: [],
@@ -8,12 +8,16 @@ export const initialState = {
     date:[],
     weight:[],
     lastWeight: [],
+    bmr:[],
+    calNeeds:[],
+    idealWeight:[],
+    weeks:[],
 
 
 };
 
 const reducer = (state = initialState, actions) => {
-   // console.log(state, action);
+    console.log("reducer state, action:", state, actions);
     switch (actions.type) {
         case"ADD_WORKOUT_LIST":
         return{
@@ -24,7 +28,7 @@ const reducer = (state = initialState, actions) => {
         case"GET_USER_PROFILE":
         return{
             ...state,
-            userprofile: actions.payload
+            userProfile: actions.payload
         }
         case"GET_USER_WORKOUT":
         return{

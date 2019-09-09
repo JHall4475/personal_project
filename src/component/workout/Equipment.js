@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { addToWorkout } from '../../ducks/actions';
-import { getUserProfile } from '../../ducks/actions'
 import { connect } from 'react-redux';
 import '../workout/equipment.css';
 import { toast } from 'react-toastify';
@@ -90,12 +89,12 @@ class Equipment extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userprofile: state.userprofile,
-        username: state.userprofile.username,
-        userId: state.userprofile.id,
+        userprofile: state.userProfile,
+        username: state.userProfile.username,
+        userId: state.userProfile.id,
         name: state.name,
         description: state.description,
     }
 }
 
-export default connect(mapStateToProps, { addToWorkout, getUserProfile })(Equipment);
+export default connect(mapStateToProps, { addToWorkout })(Equipment);

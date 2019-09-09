@@ -90,8 +90,8 @@ class Workout extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userprofile: state.userprofile,
-        id: state.userprofile.id,
+        userprofile: state.userProfile,
+        id: state.userProfile.id,
         workoutHolder: state.workoutHolder,
     }
 }

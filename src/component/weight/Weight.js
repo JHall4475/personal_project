@@ -87,7 +87,7 @@ class Weight extends Component {
 const mapStateToProps = (state) => {
     return {
         userprofile: state.userProfile,
-        userid: state.userprofile.id,
+        userid: state.userProfile.id,
         weightEntries: state.weightEntries,
         date: state.date,
         weight: state.weight

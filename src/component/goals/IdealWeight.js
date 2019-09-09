@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './idealWeight.css';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import store from '../../ducks/store';
 
 
 class IdealWeight extends Component {
@@ -130,7 +129,7 @@ class IdealWeight extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userid: state.userprofile.id,
+        userid: state.userProfile.id,
     }
 }
 

@@ -7,8 +7,9 @@ import "../nav/nav.css"
 function Nav(props) {
     const logoutUser = () => {
         axios.post('/api/logoutUser')
-            .then((response) => {
-                console.log(response)
+
+       
+            .then(() => {
                 props.history.push('/')
             })
     }

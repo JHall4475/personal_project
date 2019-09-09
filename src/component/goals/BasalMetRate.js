@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import{ connect } from 'react-redux';
 import axios from 'axios';
 import './basalMetRate.css';
 
@@ -14,19 +15,6 @@ class BasalMetRate extends Component {
         basalMetRate: 0,
         userProfile: [],
     }
-
-    componentDidMount = () => {
-        this.getUserProfile()
-    }
-
-    getUserProfile = () => {
-        axios.get('/api/user')
-            .then(user => {
-                //    console.log("user", user)
-                this.setState({ userProfile: user.data })
-            })
-    }
-
 
     onChangeHeight = (e) => {
         this.setState({ heightFeet: e.target.value })
@@ -52,30 +40,29 @@ class BasalMetRate extends Component {
 
     harrisBenedict = () => {
         let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
-        console.log(totalHeight)
-        console.log(6.23 * Number(this.state.weight))
-        console.log(12.7 * totalHeight)
         let bmr = 66 + (6.23 * Number(this.state.weight)) + (12.7 * totalHeight) - (6.8 * Number(this.state.age))
-        console.log(bmr)
-        let roundedBMR = Math.round(bmr)
-        this.setState({ basalMetRate: roundedBMR })
+       //add set state to redux?
+        this.setState({ basalMetRate: Math.round(bmr) })
         axios.post('/api/basal/post', {
+            id: this.state.userProfile.id,
             basalMetRate: this.state.basalMetRate
         })
             .then((response) => {
                 console.log(response.data)
-
             })
     }
 
     harrisBenedictFemale = () => {
         let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
-        console.log(totalHeight)
-        console.log(6.23 * Number(this.state.weight))
-        console.log(12.7 * totalHeight)
         let bmr = Math.round(655 + (4.35 * Number(this.state.weight)) + (4.7 * totalHeight) - (4.7 * Number(this.state.age)))
-        console.log(bmr)
         this.setState({ basalMetRate: bmr })
+        axios.post('/api/basal/post', {
+            id: this.state.userProfile.id,
+            basalMetRate: this.state.basalMetRate
+        })
+            .then((response) => {
+                console.log(response.data)
+            })
     }
 
 
@@ -169,4 +156,10 @@ class BasalMetRate extends Component {
     }
 }
 
-export default BasalMetRate;
+const mapStateToProps=(state) => {
+    return{
+        userprofile: state.userProfile
+    }
+}
+
+export default connect(mapStateToProps)(BasalMetRate);

@@ -54,8 +54,7 @@ class WeightWizard extends Component {
         axios.post('/api/weight/post', {
             id: this.state.userProfile.id,
             date: this.state.date,
-            weight: this.state.weight,
-           
+            weight: this.state.weight,   
         })
         .then((response) => {
             console.log(response.data)

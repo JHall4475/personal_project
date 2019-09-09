@@ -109,7 +109,16 @@ module.exports = {
     },
     addBasalEntry:(req, res) => {
         const db = req.app.get('db')
-        db.add_basal_entry([])
+        db.add_basal_entry([req.body.id, req.body.basalMetRate])
+        .then(
+            res => {
+                res.status(200).send("Successfully added entry")
+            }
+        )
+       
+        .catch(err => {
+            return res.status(500).send(err.response)
+        })
     }
 
 

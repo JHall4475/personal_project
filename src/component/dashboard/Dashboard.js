@@ -6,7 +6,6 @@ import WeightDisplay from '../weight/WeightDisplay';
 import {Line} from 'react-chartjs-2';
 import 'chartjs-plugin-annotation';
 import {connect} from 'react-redux'; 
-import  store  from '../../ducks/store'
 
 
 
@@ -26,7 +25,7 @@ getWorkout = () => {
     axios.get(`/api/workout/retrieve/${id}`
     )
     .then(workouts => {
-        store.dispatch({type:"GET_USER_WORKOUT", payload: workouts.data})
+        this.props.dispatch({type:"GET_USER_WORKOUT", payload: workouts.data})
     })
 }
 getWeight = () => {
@@ -34,7 +33,7 @@ getWeight = () => {
     axios.get(`/api/weightretrieve/${id}`)
     .then(entries => {
         console.log("Dash weights", entries)
-        store.dispatch({type:"GET_USER_WEIGHT", payload: entries.data})
+        this.props.dispatch({type:"GET_USER_WEIGHT", payload: entries.data})
         console.log("weight entries redux", this.props.weightEntries)
     })
     .then(this.getLabels)
@@ -50,7 +49,7 @@ getLabels= () => {
           date: finalDate,
           weight: finalWeight
       }
-      store.dispatch({type:"GRAPH_LABELS", payload: labels})
+      this.props.dispatch({type:"GRAPH_LABELS", payload: labels})
       console.log("labels date:", this.props.date, "labels weight:", this.props.weight)
   }
 
@@ -74,37 +73,21 @@ deleteWeightEntry = (id) => {
     render() {
 
         const options = {
-           legend:{
-               labels:{
-                //    fontColor:"rgb(217, 229, 214)"
-               }
-           },
-            gridLines:{
-                // color:"rgb(217, 229, 214)",
-            },
+          
             scales: {
                 xAxes: [{ 
                     gridLines: {
                         display: true,
-                    },
-                    ticks: {
-                    //   fontColor: "rgb(217, 229, 214)", // this here
-                    },
-                }],
+                    }}],
                 yAxes: [{
                     display: true,
                     gridLines: {
                         display: true,
-                    },
-                    ticks: {
-                        // fontColor: "rgb(217, 229, 214)", // this here
-                      },
-                }],
+                    }}],
             },
             annotation: {
                 annotations: [{
                     drawTime: 'afterDatasetsDraw',
-                    borderColor: 'red',
                     borderDash: [2, 2],
                     borderWidth: 2,
                     mode: 'vertical',
@@ -123,7 +106,6 @@ deleteWeightEntry = (id) => {
             backgroundColor: 'rgb(95, 158, 160)',
             borderColor: '#494949',
             data: this.props.weight,
-            // zeroLineColor: 'rgb(217, 229, 214)',
             }]
         }
 
@@ -151,7 +133,7 @@ deleteWeightEntry = (id) => {
      <div className="dash-goals-container">
          <h3>Goals</h3>
          <div >
-             <img className="dash-goals-img" src={this.props.profile_pic} alt="profile picture that is chosen by the user"></img>
+             <img className="dash-goals-img" src={this.props.profile_pic} alt="profile that is chosen by the user"></img>
          </div>
             <h3 className='goals-quote'>
                 "A journey of a thousand miles begins with a single step."
@@ -204,16 +186,16 @@ deleteWeightEntry = (id) => {
 const mapStateToProps = (state) => {
     return {
         userprofile: state.userProfile,
-        username: state.userprofile.username,
-        userid: state.userprofile.id,
-        profile_pic: state.userprofile.profile_pic,
+        username: state.userProfile.username,
+        userid: state.userProfile.id,
+        profile_pic: state.userProfile.profile_pic,
         weightEntries: state.weightEntries,
         workoutHolder: state.workoutHolder,
         date: state.date,
         weight: state.weight,
-        bmr: state.userprofile.bmr,
-        calneeds: state.userprofile.caloric_needs,
-        idealweight: state.userprofile.ideal_weight
+        bmr: state.userProfile.bmr,
+        calneeds: state.userProfile.caloric_needs,
+        idealweight: state.userProfile.ideal_weight
     }
 }
 
