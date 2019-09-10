@@ -11,7 +11,7 @@ export const initialState = {
     bmr:[],
     calNeeds:[],
     idealWeight:[],
-    weeks:[],
+    weeksFinal:[],
 
 
 };

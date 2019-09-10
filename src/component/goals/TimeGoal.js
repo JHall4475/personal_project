@@ -15,12 +15,13 @@ class TimeGoal extends Component {
 
     componentDidMount = () => {
         this.weeksCalculator()
+        console.log("timegoal userprofile", this.props.userProfile)
     }
 
 
 
     weeksCalculator = () => {
-      let diff =  Number(this.state.currentWeight - this.state.idealWeight)
+      let diff =  Number(this.props.userProfile.current_weight - this.props.userProfile.ideal_weight)
         if(diff >= 1){
             return this.setState({weeks: diff})
         } else{
@@ -31,8 +32,8 @@ class TimeGoal extends Component {
     calorieCounter = (lbs) => {
         return(
         <div>
-            <div>Your current weight is: {this.state.currentWeight}</div>
-            <div>Your ideal weight is: {this.state.idealWeight}</div>
+            <div>Your current weight is: {this.props.userProfile.current_weight}</div>
+            <div>Your ideal weight is: {this.props.userProfile.ideal_weight}</div>
             <div>
             if you loose {lbs} calories/week or {lbs/3500} lb(s)/week
             </div>
@@ -73,6 +74,7 @@ class TimeGoal extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        userProfile: state.userProfile,
         userid: state.userProfile.id,
     }
 }

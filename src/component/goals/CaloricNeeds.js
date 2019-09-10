@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import axios from 'axios';
 import './caloricNeeds.css'
 
 class CaloricNeeds extends Component {
@@ -11,6 +13,10 @@ class CaloricNeeds extends Component {
 
     }
 
+componentDidMount= () => {
+    console.log(this.props.userProfile.bmr)
+}
+
     handleOptionChange = (e) => {
         this.setState({ selectedOption: e.target.value })
     }
@@ -22,13 +28,19 @@ class CaloricNeeds extends Component {
         this.setState({ activityLevel: e.target.value })
     }
     calculateCalories = () => {
-        let bmr = this.state.basalMetRate
+        let bmr = this.props.userProfile.bmr
+        console.log("Caloric Needs bmr:", bmr)
         let activity = Number(this.state.activityLevel)
         let calories = Math.round(bmr * activity)
         this.setState({ caloricNeeds: calories })
+        axios.post('/api/caloric/post', {
+            userId: this.props.userProfile.id,
+            calNeeds: calories
+        })
+        .then((response) => {
+            console.log(response.data)
+        })
     }
-
-
 
     render() {
         return (
@@ -104,4 +116,10 @@ class CaloricNeeds extends Component {
     }
 }
 
-export default CaloricNeeds;
+const mapStateToProps=(state) => {
+    return{
+        userProfile: state.userProfile
+    }
+}
+
+export default connect(mapStateToProps)(CaloricNeeds);

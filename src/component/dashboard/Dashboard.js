@@ -18,6 +18,7 @@ class Dashboard extends Component {
 componentDidMount = () => {
     this.getWeight()
     this.getWorkout()
+    console.log("dash userprof redux", this.props.userProfile.id)
 }
 
 getWorkout = () => {
@@ -146,10 +147,10 @@ deleteWeightEntry = (id) => {
                 Your current Caloric Needs: {this.props.calneeds}
             </div>
             <div>
-                Your Ideal Weight: {this.props.idealweight}
+                Your Ideal Weight: {this.props.userProfile.ideal_weight}
             </div>
             <div>
-                Your current goal is to reach your ideal weight in: {16} weeks
+                Your current goal is to reach your ideal weight in: {this.props.userProfile.weeks_final} weeks
             </div>
 
             
@@ -185,7 +186,7 @@ deleteWeightEntry = (id) => {
 
 const mapStateToProps = (state) => {
     return {
-        userprofile: state.userProfile,
+        userProfile: state.userProfile,
         username: state.userProfile.username,
         userid: state.userProfile.id,
         profile_pic: state.userProfile.profile_pic,

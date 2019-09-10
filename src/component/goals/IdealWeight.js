@@ -44,13 +44,37 @@ class IdealWeight extends Component {
     }
 
     handleSelectedOption = () => {
+        let finalWeightLarge = Math.round(Number(this.state.weightMid * 1.1)) 
+        let finalWeightSmall= Math.round(Number(this.state.weightMid * 0.9))
         if (this.state.selectedOption === "Large Frame") {
             this.setState(
-                { finalIdWeight: Math.round(Number(this.state.weightMid * 1.1)) })
+                { finalIdWeight: finalWeightLarge }
+                )
+                axios.post('/api/ideal/post', {
+                    id: this.props.userProfile.id,
+                    idealWeight: finalWeightLarge
+                })
+                .then((response) => {
+                    console.log(response.data)
+                })
         } else if (this.state.selectedOption === "Small Frame") {
-            this.setState({ finalIdWeight: Math.round(Number(this.state.weightMid * 0.9)) })
+            this.setState({ finalIdWeight: finalWeightSmall  })
+            axios.post('/api/ideal/post', {
+                id: this.props.userProfile.id,
+                idealWeight: finalWeightSmall
+            })
+            .then((response) => {
+                console.log(response.data)
+            })
         } else {
             this.setState({ finalIdWeight: this.state.weightMid })
+            axios.post('/api/ideal/post', {
+                id: this.props.userProfile.id,
+                idealWeight: this.state.weightMid
+            })
+            .then((response) => {
+                console.log(response.data)
+            })
         }
     }
 
@@ -129,6 +153,7 @@ class IdealWeight extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        userProfile: state.userProfile,
         userid: state.userProfile.id,
     }
 }

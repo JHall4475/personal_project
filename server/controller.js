@@ -23,12 +23,12 @@ module.exports = {
         .then( (user => {
             bcrypt.compare(req.body.password, user[0].password, (err, isCorrectPassword) => {
                 if (!isCorrectPassword) {
-                    console.log('error')
+                    console.log('password is incorrect error')
                     return res.status(500).send("error")
                 }
                 if(isCorrectPassword){
                     console.log('passwords match')
-                    console.log(req.session.user)
+                    console.log("user", req.session.user)
                     req.session.user = user[0]
                     res.send(req.session.user)
                 }
@@ -107,19 +107,22 @@ module.exports = {
         db.delete_weight_entry([req.params.id])
         res.send("Successfully deleted weight entry")
     },
-    addBasalEntry:(req, res) => {
+    addBasalEntry: (req, res) => {
         const db = req.app.get('db')
-        db.add_basal_entry([req.body.id, req.body.basalMetRate])
-        .then(
-            res => {
-                res.status(200).send("Successfully added entry")
-            }
-        )
-       
-        .catch(err => {
-            return res.status(500).send(err.response)
-        })
+        db.add_basal_entry([req.body.id, req.body.basalMetRate, req.body.age, req.body.height, req.body.gender, req.body.currentWeight])
+         res.status(200).send("Successfully added entry")   
+    },
+    addCaloricNeeds: (req, res) => {
+        const db = req.app.get('db')
+        db.add_caloric_needs([req.body.userId, req.body.calNeeds])
+        res.status(200).send("Successfully added entry")
+    },
+    updateIdealWeight: (req, res) => {
+        const db = req.app.get('db')
+        db.update_ideal_weight([req.body.id, req.body.idealWeight])
+        res.status(200).send("Successfully added entry")
     }
+    
 
 
 }

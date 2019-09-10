@@ -40,25 +40,38 @@ class BasalMetRate extends Component {
 
     harrisBenedict = () => {
         let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
-        let bmr = 66 + (6.23 * Number(this.state.weight)) + (12.7 * totalHeight) - (6.8 * Number(this.state.age))
+        console.log("basal total height:", totalHeight)
+        let bmr =Math.round( 66 + (6.23 * Number(this.state.weight)) + (12.7 * totalHeight) - (6.8 * Number(this.state.age)))
+        console.log("basalmetrate bmr:", bmr)
        //add set state to redux?
-        this.setState({ basalMetRate: Math.round(bmr) })
+        this.setState({ basalMetRate: bmr })
+        let genderBasal = (this.state.selectedOption == "male" ? "m" : "f")
+        console.log("basalmetrate gender", genderBasal)
         axios.post('/api/basal/post', {
-            id: this.state.userProfile.id,
-            basalMetRate: this.state.basalMetRate
+            id: this.props.userprofile.id,
+            basalMetRate: bmr,
+            age: this.state.age,
+            height: totalHeight,
+            gender: genderBasal,
+            currentWeight: this.state.weight,
         })
-            .then((response) => {
-                console.log(response.data)
-            })
+        .then((response) => {
+            console.log(response.data)
+        })
     }
 
     harrisBenedictFemale = () => {
         let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
         let bmr = Math.round(655 + (4.35 * Number(this.state.weight)) + (4.7 * totalHeight) - (4.7 * Number(this.state.age)))
         this.setState({ basalMetRate: bmr })
+        let genderBasal = (this.state.selectedOption === "male" ? "m" : "f")
         axios.post('/api/basal/post', {
-            id: this.state.userProfile.id,
-            basalMetRate: this.state.basalMetRate
+            id: this.props.userprofile.id,
+            basalMetRate: bmr,
+            age: this.state.age,
+            height: totalHeight,
+            gender: genderBasal,
+            currentWeight: this.state.weight,
         })
             .then((response) => {
                 console.log(response.data)

@@ -47,6 +47,8 @@ app.post('/api/login', controller.loginUser)
 app.post('/api/logoutUser', controller.logoutUser)
 app.post('/api/weight/post', controller.weightPost)
 app.post('/api/basal/post', controller.addBasalEntry)
+app.post('/api/caloric/post', controller.addCaloricNeeds)
+app.post('/api/ideal/post', controller.updateIdealWeight)
 
 app.put('/api/workout/post', controller.addToWorkout)
 
