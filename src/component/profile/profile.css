@@ -2,7 +2,23 @@
     height: 84vh;
     width: 100%;
     margin-top: 4vh;
-    border: 3px solid red;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 3px solid green;
+    overflow: scroll;
+}
+.profile-container{
+    height: 100%;
+    width: 84%;
+    border: 3px solid orange;
+}
+.profile-img{
+    height: 40%;
+    min-height: 30%;
+    min-width: 30%;
+    width: 40%;
+    border: 2px solid red;
 }
 
 

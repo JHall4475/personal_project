@@ -20,12 +20,14 @@
 }
 
 .nav-link {
+    width: 15%;
+    max-width: 15%;
     color: #d9e5d6;
     text-decoration: none;
 
 }
 .nav-link:hover{
-    background-color: cornflowerblue;
+    background-color: #406E8E;
 }
 
 .profile-pic{
