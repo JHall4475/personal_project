@@ -8,13 +8,16 @@ module.exports = {
             if(err) {
                 return res.send('Something went wrong during hashing')
             }
+            if(hash){
             db.add_new_user([req.body.username, hash])
             .then(() => {
                 res.status(200).send('Added new user')
-            })
+              })
             .catch((err) => {
-                return res.send(500).send(err)
-            })
+                return res.sendStatus(500).send(err)
+            })}
+            else{console.log(err)
+            res.send("Something went wrong during hashing")}
         })
     },
     loginUser: (req, res) => {
@@ -50,7 +53,7 @@ module.exports = {
     
     weightPost: (req, res) => {
         const db = req.app.get('db')
-        db.add_new_weight([req.body.id, req.body.date, req.body.weight])
+        db.add_new_weight([req.body.id, req.body.date, req.body.weight, req.body.timeStamp])
         res.status(200).send("Successfully added weight entry")
     },
     addToWorkout: (req, res) => {
@@ -121,6 +124,11 @@ module.exports = {
         const db = req.app.get('db')
         db.update_ideal_weight([req.body.id, req.body.idealWeight])
         res.status(200).send("Successfully added entry")
+    },
+    updateProfile: (req, res) => {
+        const db = req.app.get('db')
+        db.update_user_profile([req.body.id, req.body.userName, req.body.profilePic])
+        res.status(200).send("Successfully updated profile")
     }
     
 

@@ -20,7 +20,6 @@ class SearchBar extends Component {
     getInfo = () => {
         axios.get(`${API_URL}`)
         .then(({data}) => {
-            console.log(data)
             this.setState({
                 results: data
             })

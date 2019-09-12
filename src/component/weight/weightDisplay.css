@@ -1,10 +1,19 @@
 
 .wd-wpr{
-    border: 5px dotted orange;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 
 .wd-cntr{
-    border: 5px solid purple;
+    width: 90%;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #406E8E;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px;
+
 
 }

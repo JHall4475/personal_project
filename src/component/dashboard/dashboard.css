@@ -7,15 +7,6 @@
     height: 84vh;
     width:100%;
     margin-top: 4vh;
-    /* background: url(../assets/athlete-barbell-bodybuilder-949128.jpg); */
-    /* background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    overflow: hidden; */
-    /* backface-visibility: hidden;
-    position: relative;
-    will-change: over; */
-    border: solid cornflowerblue 5px;
 }
 
 .display-container{
@@ -24,7 +15,6 @@
     display: flex;
     float: inline-start;
     overflow: hidden;
-    border: 4px solid blue;
     
 }
 
@@ -32,9 +22,7 @@
     height: 100%;
     width: 33.3%;
     min-width: 33%;
-    padding: .05%;
     overflow: scroll ;
-    border: 3px solid orange;
 }
 
 .dash-goals-container{
@@ -42,15 +30,25 @@
     width:33.3%;
     min-width: 33%;
     padding: .05%;
-    justify-content: center;
-    border: 3px chartreuse solid;
+    justify-content: space-around;
+    align-content: space-around;
+    /* border: 3px chartreuse solid; */
+}
+.dash-goals-wrapper{
+    height: 93%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 2px solid red; */
 }
 .dash-goals-img{
-    height: 60%;
-    min-height: 50%;
-    width: 60%;
-    min-width: 50%;
-    border: 2px solid red;
+    height: 50%;
+    min-height: 40%;
+    width: 50%;
+    min-width: 40%;
+    
+    /* border: 2px solid red; */
 }
 
 .weight-container{
@@ -60,5 +58,5 @@
     padding: .05%;
     flex-flow: column;
     overflow: scroll;
-    border: 3px solid purple;
+    /* border: 3px solid purple; */
 }

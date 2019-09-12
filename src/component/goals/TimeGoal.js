@@ -15,10 +15,7 @@ class TimeGoal extends Component {
 
     componentDidMount = () => {
         this.weeksCalculator()
-        console.log("timegoal userprofile", this.props.userProfile)
     }
-
-
 
     weeksCalculator = () => {
       let diff =  Number(this.props.userProfile.current_weight - this.props.userProfile.ideal_weight)
@@ -31,7 +28,7 @@ class TimeGoal extends Component {
 
     calorieCounter = (lbs) => {
         return(
-        <div>
+        <div className="time-goal-body">
             <div>Your current weight is: {this.props.userProfile.current_weight}</div>
             <div>Your ideal weight is: {this.props.userProfile.ideal_weight}</div>
             <div>
@@ -43,7 +40,7 @@ class TimeGoal extends Component {
             <div>
                 {Number((lbs / 7) / 2)} calories from each diet and exercise
             </div>
-            <div>To reach your ideal weight it will take {Math.round(this.state.weeks / (lbs/3500))} weeks</div>
+            <div>It will take an estimated {Math.round(this.state.weeks / (lbs/3500))} weeks to reach your ideal weight</div>
         </div>
         )
     }
@@ -53,19 +50,19 @@ class TimeGoal extends Component {
         return(
             <div className="time-goal-wrapper">
                  <div className="time-options">
-                    goal 1
+                 <div>Goal 1</div>  
                     {this.calorieCounter(this.state.onePound)}
-                    <button>Set Goal</button>
+                    {/* <button>Set Goal</button> */}
                 </div>
                 <div className="time-options">
-                    goal 2
+                <div>Goal 2</div>  
                     {this.calorieCounter(this.state.oneHalfPounds)}
-                    <button>Set Goal</button>
+                    {/* <button>Set Goal</button> */}
                 </div>
                 <div className="time-options">
-                    goal 3
+                   <div>Goal 3</div> 
                     {this.calorieCounter(this.state.twoPounds)}
-                    <button>Set Goal</button>
+                    {/* <button>Set Goal</button> */}
                  </div>  
             </div>
         )

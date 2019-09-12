@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import{ connect } from 'react-redux';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import './basalMetRate.css';
+import { toast } from 'react-toastify';
 
 class BasalMetRate extends Component {
 
@@ -40,13 +41,10 @@ class BasalMetRate extends Component {
 
     harrisBenedict = () => {
         let totalHeight = Number(this.state.heightFeet * 12) + Number(this.state.heightInches)
-        console.log("basal total height:", totalHeight)
-        let bmr =Math.round( 66 + (6.23 * Number(this.state.weight)) + (12.7 * totalHeight) - (6.8 * Number(this.state.age)))
-        console.log("basalmetrate bmr:", bmr)
-       //add set state to redux?
+        let bmr = Math.round(66 + (6.23 * Number(this.state.weight)) + (12.7 * totalHeight) - (6.8 * Number(this.state.age)))
+        //add set state to redux?
         this.setState({ basalMetRate: bmr })
-        let genderBasal = (this.state.selectedOption == "male" ? "m" : "f")
-        console.log("basalmetrate gender", genderBasal)
+        let genderBasal = (this.state.selectedOption === "male" ? "m" : "f")
         axios.post('/api/basal/post', {
             id: this.props.userprofile.id,
             basalMetRate: bmr,
@@ -54,9 +52,6 @@ class BasalMetRate extends Component {
             height: totalHeight,
             gender: genderBasal,
             currentWeight: this.state.weight,
-        })
-        .then((response) => {
-            console.log(response.data)
         })
     }
 
@@ -73,9 +68,6 @@ class BasalMetRate extends Component {
             gender: genderBasal,
             currentWeight: this.state.weight,
         })
-            .then((response) => {
-                console.log(response.data)
-            })
     }
 
 
@@ -84,14 +76,13 @@ class BasalMetRate extends Component {
         return (
             <div className="basal-wrapper">
                 <div className='basal-container'>
-
-                    <p>Basal Metabolic Rate Calculator </p>
-
-                    <form>
+                        <div className="calc-box">
+                        <div>Basal Metabolic Rate Calculator </div>
+                        <form>
                         <div className="gender-form">
                             <label>
                                 Male
-                   <input
+                                <input
                                     type="radio"
                                     value="male"
                                     checked={this.state.selectedOption === "male"}
@@ -99,11 +90,9 @@ class BasalMetRate extends Component {
                                 ></input>
 
                             </label>
-                        </div>
-                        <div className="gender-form">
                             <label>
                                 Female
-            <input
+                                <input
                                     type="radio"
                                     value="female"
                                     checked={this.state.selectedOption === "female"}
@@ -146,31 +135,36 @@ class BasalMetRate extends Component {
                             </select>
                         </label>
                     </form>
-                    <br></br>
-                    Weight in Pounds
-                <input
-                        value={this.state.weight}
-                        onChange={this.onChangeWeight}
-                    ></input>
-                    <br></br>
-                    Age
-                <input
-                        value={this.state.age}
-                        onChange={this.onChangeAge}
-                    ></input>
-
-                    <br></br>
+                    <div>
+                        Weight in Pounds:
+                    <input
+                            value={this.state.weight}
+                            onChange={this.onChangeWeight}
+                        ></input>
+                    </div>
+                    <div>
+                        Age: 
+                    <input
+                            value={this.state.age}
+                            onChange={this.onChangeAge}
+                        ></input>
+                    </div>
                     <button onClick={() => this.calculateBmr()}>Calculate</button>
-                    <div>Your BasalMetRate is : {this.state.basalMetRate}</div>
-
+                    <div>
+                        Your BasalMetRate is : {this.state.basalMetRate}
+                    </div>
+                    </div>
+                    <div className="info-box">
+                        <div>Basal Metabolic Rate is the number of calories required to keep your body functioning at rest. BMR is also known as your body’s metabolism; therefore, any increase to your metabolic weight, such as exercise, will increase your BMR. To get your BMR, simply input your height, gender, age and weight below. Once you’ve determined your BMR, you can begin to monitor how many calories a day you need to maintain or lose weight.</div>
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-const mapStateToProps=(state) => {
-    return{
+const mapStateToProps = (state) => {
+    return {
         userprofile: state.userProfile
     }
 }

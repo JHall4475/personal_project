@@ -7,8 +7,6 @@ import "../nav/nav.css"
 function Nav(props) {
     const logoutUser = () => {
         axios.post('/api/logoutUser')
-
-       
             .then(() => {
                 props.history.push('/')
             })
@@ -18,14 +16,10 @@ function Nav(props) {
         return (
             <div className="nav-wrapper">
                 <div className="nav-items">
-                    {/* {console.log("props:", props)} */}
-                    <button
+                    <button className="nav-btn"
                         onClick={() => logoutUser()}>Logout
                     </button>
                     <Link className="nav-link" to='/profile'>
-                    {/* <img className="profile-pic" 
-                    src="https://image.flaticon.com/icons/png/512/21/21294.png"
-                    ></img> */}
                     <p>Profile</p>
                     </Link>
 

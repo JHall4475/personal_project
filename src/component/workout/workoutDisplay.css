@@ -1,7 +1,23 @@
 .wod-wrp{
-    border: 10px solid green
+    height: fit-content;
+    min-height: 15vh;
+    width: 100%;
+    /* margin: 1px;
+    margin-top: 2px;
+    padding: 4px; */
+    /* border: 2px solid #406E8E; */
+    display: flex;
+    justify-content: center;
 }
-
 .wod-cntr{
-    border: 3px dotted black;
+    width: 90%;
+    margin: 2px;
+    padding: 5px;
+    border: 2px solid #406E8E;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px;
+    margin: 5px;
+
+
+
 }

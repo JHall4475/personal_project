@@ -1,20 +1,22 @@
 .header-container{
     background-image: linear-gradient(to bottom right, #152d44, #406E8E);
     height: 6vh;
+    min-height: 6vh;
+    overflow: hidden;
+
 }
 
 .title-container{
+    height: 5vh;
+    width: 30%;
     color: #d9e5d6;
-
     float: left;
     margin-left: 10%;
-    margin-top: 2px;
-    
-    
+    margin-top: 2px;  
+    /* border: 2px solid red; */
 }
 
 .header-e{
-
     text-shadow: 2px 3px 3px #292929;
     font-weight: 300;
     font-size: 275%;

@@ -4,7 +4,7 @@
     height: 84vh;
     width: 100vw;
     margin-top: 4vh;
-    border: 5px solid red;
+    /* border: 5px solid red; */
     overflow: hidden;
 }
 
@@ -13,20 +13,20 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
 }
 
 .w-current-workout{
     width: 50%;
     height: auto;
     overflow: scroll;
-    border: solid orange 5px;
+    /* border: solid orange 5px; */
 }
 
 .w-add-to{
     height: 100%;
     width: 50%;
-    border: solid yellow 5px;
+    /* border: solid yellow 5px; */
     overflow: scroll;
 }
 .w-toggle-container{
@@ -34,5 +34,5 @@
     min-height: 3vh;
     display: flex;
     justify-content: space-around;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }

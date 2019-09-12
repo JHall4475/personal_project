@@ -54,26 +54,17 @@ class IdealWeight extends Component {
                     id: this.props.userProfile.id,
                     idealWeight: finalWeightLarge
                 })
-                .then((response) => {
-                    console.log(response.data)
-                })
         } else if (this.state.selectedOption === "Small Frame") {
             this.setState({ finalIdWeight: finalWeightSmall  })
             axios.post('/api/ideal/post', {
                 id: this.props.userProfile.id,
                 idealWeight: finalWeightSmall
             })
-            .then((response) => {
-                console.log(response.data)
-            })
         } else {
             this.setState({ finalIdWeight: this.state.weightMid })
             axios.post('/api/ideal/post', {
                 id: this.props.userProfile.id,
                 idealWeight: this.state.weightMid
-            })
-            .then((response) => {
-                console.log(response.data)
             })
         }
     }
@@ -84,9 +75,10 @@ class IdealWeight extends Component {
     render() {
         return (
             <div className="idweight-wrapper">
-                <div>IdealWeight</div>
                 <div className="box-container">
                     <div className="calc-box">
+                        <div>IdealWeight</div>
+
                         <form>
                             <div className="gender-form">
                                 <label>
@@ -99,8 +91,6 @@ class IdealWeight extends Component {
                                     ></input>
 
                                 </label>
-                            </div>
-                            <div className="gender-form">
                                 <label>
                                     Female
                                     <input
@@ -112,7 +102,7 @@ class IdealWeight extends Component {
                                 </label>
                             </div>
                         </form>
-
+                    <div className="idw-calc-wrapper">
                         <form>
                             Height:
                             <input
@@ -139,11 +129,11 @@ class IdealWeight extends Component {
                         </form>
 
                         <button onClick={() => this.calculateIdealWeight()}>Calculate</button>
-
-                        <p>Your Ideal Weight is: {this.state.finalIdWeight} lbs</p>
+                    </div>
+                        <div>Your Ideal Weight is: {this.state.finalIdWeight} lbs</div>
                     </div>
                     <div className="info-box">
-                        <p>To calculate a patient's frame size, they must place the thumb and the index finger around the wrist. If the finger overlaps the thumb, the "Small Frame" entry should be used. If the index finger and the thumb touch, the patient has a "Medium Frame". If they do not touch, the patient has a "Large Frame".</p>
+                        <div>To calculate a patient's frame size, they must place the thumb and the index finger around the wrist. If the finger overlaps the thumb, the "Small Frame" entry should be used. If the index finger and the thumb touch, the patient has a "Medium Frame". If they do not touch, the patient has a "Large Frame".</div>
                     </div>
                 </div>
             </div>

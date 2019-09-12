@@ -7,17 +7,16 @@ export const initialState = {
     weightEntries: [],
     date:[],
     weight:[],
-    lastWeight: [],
     bmr:[],
     calNeeds:[],
     idealWeight:[],
     weeksFinal:[],
-
-
+    muscles:[],
+    equipmentList:[],
+    
 };
 
 const reducer = (state = initialState, actions) => {
-    console.log("reducer state, action:", state, actions);
     switch (actions.type) {
         case"ADD_WORKOUT_LIST":
         return{
@@ -40,17 +39,21 @@ const reducer = (state = initialState, actions) => {
             ...state,
             weightEntries: actions.payload
         }
-        case"GET_USER_LAST_WEIGHT":
-        return{
-            ...state,
-            lastWeight: actions.payload
-
-        }
         case"GRAPH_LABELS":
         return{
             ...state,
             date: actions.payload.date,
             weight: actions.payload.weight
+        }
+        case"MUSCLE_LIST":
+        return{
+            ...state,
+            muscles: actions.payload
+        }
+        case"EQUIPMENT_LIST":
+        return{
+            ...state,
+            equipmentList: actions.payload
         }
         default: return state;
     }

@@ -24,7 +24,7 @@ class WorkoutDisplay extends Component {
         return (
             <div className='wod-wrp'>
                 <div className='wod-cntr'>
-                    <p>Name: {name}</p>
+                    <p>{name}</p>
                     <p>Description: {description}</p>
                     <div>{this.buttonRender()}</div>
                 </div>

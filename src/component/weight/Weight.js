@@ -11,15 +11,45 @@ class Weight extends Component {
 
 
     deleteWeightEntry = (id) => {
-        console.log(id)
         axios.delete(`/api/weight/${id}`)
             .then((response) => {
-                console.log(response.data)
             })
     }
 
     render() {
         const options = {
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    display: true,
+                    distribution: 'series',
+                    bounds:'data',
+                     position: 'bottom',
+                    ticks:{
+                        reverse: false,
+                        source: 'data',
+                    },
+                    time:{
+                        displayFormats:{
+                            'millisecond': 'MM/DD/YY',
+                            'second': 'MM/DD/YY',
+                            'minute': 'MM/DD/YY',
+                            'hour': 'MM/DD/YY',
+                            'day': 'MM/DD/YY',
+                            'week': 'MM/DD/YY',
+                            'month': 'MM/DD/YY',
+                            'quarter': 'MM/DD/YY',
+                            'year': 'MM/DD/YY'  
+                        }
+                    }  
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: true,
+                    },
+                    bounds: 'data',
+                }],
+            },            
             annotation: {
                 annotations: [{
                     drawTime: 'afterDatasetsDraw',
@@ -27,7 +57,7 @@ class Weight extends Component {
                     borderDash: [2, 2],
                     borderWidth: 2,
                     mode: 'vertical',
-                    type: 'line',
+                    type: 'time',
                     value: 10,
                     scaleID: 'x-axis-0',
                 }]
@@ -59,11 +89,13 @@ class Weight extends Component {
                 <div className="weight-entries-container">
                     {this.props.weightEntries.map(entries => {
                         return (
-                            <div key={entries.id + entries.date}>
+                            <div key={entries.entry_number}>
+                                
                                 <div className="weight-display-kernel">
                                     <WeightDisplay
                                         date={entries.date}
                                         weight={entries.weight}
+                                        timeStamp={entries.time_stamp}
                                         deleteWeightEntry={() => this.deleteWeightEntry(entries.entry_number)}
                                     ></WeightDisplay>
                                 </div>

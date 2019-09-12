@@ -5,6 +5,7 @@ import './workout.css'
 import Equipment from './Equipment';
 import { connect } from 'react-redux';
 import Muscles from './Muscles';
+import { toast } from 'react-toastify';
 
 class Workout extends Component {
 
@@ -14,19 +15,15 @@ class Workout extends Component {
         userProfile: [],
     }
 
-    componentDidMount = () => {
-        console.log('workout location:', this.props.location.pathname)
-    }
 
     handleOptionChange = (e) => {
         this.setState({ selectedOption: e.target.value })
     }
 
     deleteWorkoutItem = (id) => {
-        console.log("delete workout item id:", id)
         axios.delete(`/api/workout/${id}`)
             .then((response) => {
-                console.log(response.data)
+                toast.success("Successfully deleted")
             })
     }
 
@@ -35,7 +32,7 @@ class Workout extends Component {
 
         return (
             <div className='workoutpg-wrapper'>
-                <h2>Workout Manager</h2>
+                <h2>Workout</h2>
                 <div className='workoutpg-container'>
                     <div className='w-current-workout'>
                         <h3>Current Workout</h3>

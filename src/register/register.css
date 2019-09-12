@@ -1,8 +1,22 @@
-.rgstr-main{
+.rgstr-wrapper{
     height: 88vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom right, #152d44, #406E8E);
+    overflow: scroll;
 }
 
-.rgstr-body-wrapper{
+.rgstr-container{
+    height: 60%;
+    width: 25%;
+    background-color: white;
+    border: 2px solid #406E8E;
+    border-radius: 5px;
+    box-shadow: 3px 6px 3px;
     display:flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }

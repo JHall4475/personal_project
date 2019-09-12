@@ -1,31 +1,55 @@
 .idweight-wrapper{
     height: 100%;
-    border: 2px solid red;
-    overflow: scroll;
 }
 .box-container{
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: row;
-    border: 2px solid magenta;
-    /* background-color: blueviolet; */
+    align-items: center;
+    justify-content: space-evenly;
 }
 .calc-box{
-    height: 100%;
-    width: 50%;
-    border: 2px solid blue;
-}
-.gender-form{
-    flex-direction: row;
-}
-.info-box{
-    height: 100%;
-    width: 50%;
+    height: 90%;
+    width: 40%;
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    justify-content: space-around;
     align-items: center;
-    overflow: scroll;
-    border: 2px solid green;
+    padding: 5px;
+    border: 2px solid #406E8E;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px;
+    margin: 5px;
+    
+}
+.info-box{
+    height: 90%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 2px solid #406E8E;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px;
+    margin: 5px;
+}
+.idw-calc-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.gender-form{
+    width: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2px;
+    padding: 2px;
 }

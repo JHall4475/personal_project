@@ -7,14 +7,12 @@ width: 100%;
 align-items: center;
 justify-content: center;
 margin-top: 4vh;
-border: 5px solid red;
+/* border: 5px solid red; */
 overflow: hidden;
 }
 .weight-header{
-
     width: 100%;
-    border: 2px solid cornflowerblue;
-
+    /* border: 2px solid cornflowerblue; */
 }
 
 .weightpg-container{
@@ -22,13 +20,13 @@ overflow: hidden;
     width:100%;
     display: flex;
     flex-direction: row;
-    border: 5px solid blue;
+    /* border: 5px solid blue; */
 }
 
 .weight-display-kernel{
     height: 100%;
     width: 100%;
-    border: 3px solid black;
+    /* border: 3px solid black; */
 }
 
 .graph-container{
@@ -37,7 +35,7 @@ overflow: hidden;
     max-width: 50%;
     max-height: 100%;
     position: relative;
-    border: 3px solid green;
+    /* border: 2px solid #406E8E; */
     padding: 1%;
     justify-content: center;
     align-items: center;
@@ -45,7 +43,11 @@ overflow: hidden;
 }
 .weight-entries-container{
     width:50%;
-    border: 3px solid orange;
+    /* border: 3px solid orange; */
     min-height: 10%;
     overflow: scroll;
+}
+.component-link{
+    color: blue;
+   text-decoration: none; 
 }

@@ -1,3 +1,7 @@
 .App {
     text-align: center;
+    font-family: Georgia, serif;  
+    font-size: 1vw;
   }
+  .toastify-content--success {border-color: #406E8E; }
+  .toastify__progress--success { background-color: #406E8E; }
