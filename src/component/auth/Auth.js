@@ -34,7 +34,8 @@ class Auth extends Component {
                 this.props.history.push('/dashboard')
                 toast.success(`Welcome ${this.state.username}`)
             })
-            .catch(() => {
+            .catch((response) => {
+                console.log("auth error", response)
                 toast.error(`Invalid Username or Password`);
             })
     }
