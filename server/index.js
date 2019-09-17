@@ -18,7 +18,7 @@ app.use(session({
 
 
 
-massive(process.env.DATABASE_STRING)
+massive (process.env.DATABASE_STRING)
 .then(db => {
     app.set('db', db)
     console.log('Database is Connected Boss')
