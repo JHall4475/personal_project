@@ -36,7 +36,7 @@ module.exports = {
                     res.send(req.session.user)
                 }
                 else{
-                    console.log(err)
+                    console.log("controller error:", err)
                     res.send('Email or Password is wrong')
                 }
             })

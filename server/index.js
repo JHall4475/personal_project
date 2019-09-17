@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const controller =require('../server/controller');
+const controller = require('../server/controller');
 const massive = require('massive');
 const cors = require('cors');
 const session = require('express-session');
@@ -56,6 +56,5 @@ app.put('/api/workout/post', controller.addToWorkout)
 app.delete('/api/workout/:id', controller.deleteWorkoutItem)
 app.delete('/api/weight/:id', controller.deleteWeightEntry)
 
-app.listen(port, function(){
-    console.log(`Server is running on ${port}`)
-})
+app.listen(port, () => console.log(`listening on ${port}`)
+)

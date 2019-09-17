@@ -1,1 +1,1 @@
-SELECT * FROM UserProfile WHERE username = $1
+SELECT * FROM userprofile WHERE username = $1
