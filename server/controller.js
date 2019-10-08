@@ -31,7 +31,7 @@ module.exports = {
                 }
                 if(isCorrectPassword){
                     console.log('passwords match')
-                    console.log("user", req.session.user)
+                    console.log("controller user req session", req.session.user)
                     req.session.user = user[0]
                     res.send(req.session.user)
                 }
